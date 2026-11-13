@@ -26,7 +26,11 @@ A ilustração é 2.5D/isométrica, feita em SVG, e toda a interação roda no n
 - Motion para transições
 - Lucide para ícones
 - SVG autoral para a casa, o personagem e os efeitos
-- Fontes locais (Outfit Variable e Inter Variable via `@fontsource`)
+- Fontes locais: Anton (display), Archivo Variable (texto/interface) e IBM Plex Mono (dados técnicos), via `@fontsource`
+
+## Direção visual
+
+A interface foi reformulada como um **laudo de campo / prancha técnica**: papel cru, tinta preta, amarelo de sinalização e vermelho de alerta. A casa é uma ilustração noturna em SVG dentro de uma prancha com moldura, códigos de equipamento e legenda; o simulador usa um painel de instrumentos escuro ao lado da prancha. A tipografia combina Anton para títulos, Archivo para leitura e IBM Plex Mono apenas para leituras e códigos.
 
 ## Skills do agente
 

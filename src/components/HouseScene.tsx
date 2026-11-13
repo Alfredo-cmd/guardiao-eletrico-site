@@ -26,12 +26,12 @@ interface HouseSceneProps {
   className?: string
 }
 
-const cream = '#e9dfca'
-const creamSide = '#cfc2a9'
-const creamDark = '#b8aa90'
-const roof = '#a9604a'
-const roofDark = '#8a4b39'
-const roofLight = '#c07a5f'
+const cream = '#e8e1d0'
+const creamSide = '#cec3af'
+const creamDark = '#b9ad96'
+const roof = '#2f4b53'
+const roofDark = '#1f3339'
+const roofLight = '#466870'
 
 export function HouseScene({
   signals,
@@ -122,7 +122,7 @@ export function HouseScene({
     return null
   })()
 
-  const tone = planned ? '#F4C95D' : signals.alarm ? '#FF6874' : '#35D6EF'
+  const tone = planned ? '#f2c230' : signals.alarm ? '#d94a35' : '#efefe6'
 
   const tagStyle = (p: Point, dx = 0, dy = 0): CSSProperties => ({
     left: `calc(${(p[0] / 1000) * 100}% + ${dx}px)`,
@@ -144,25 +144,25 @@ export function HouseScene({
           focusable="false"
         >
           <defs>
-            <radialGradient id={id('sky')} cx="50%" cy="18%" r="85%">
-              <stop offset="0%" stopColor="#1b3552" />
-              <stop offset="55%" stopColor="#102039" />
-              <stop offset="100%" stopColor="#0a1526" />
-            </radialGradient>
+            <linearGradient id={id('sky')} x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#132b2c" />
+              <stop offset="58%" stopColor="#0d2022" />
+              <stop offset="100%" stopColor="#081416" />
+            </linearGradient>
             <linearGradient id={id('grass')} x1="0" y1="0" x2="0.6" y2="1">
-              <stop offset="0%" stopColor="#2a6159" />
-              <stop offset="48%" stopColor="#1d4c49" />
-              <stop offset="100%" stopColor="#123431" />
+              <stop offset="0%" stopColor="#1d4038" />
+              <stop offset="48%" stopColor="#173530" />
+              <stop offset="100%" stopColor="#0e2823" />
             </linearGradient>
             <linearGradient id={id('grassEdge')} x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="#57d9b2" stopOpacity="0.35" />
-              <stop offset="60%" stopColor="#35d6ef" stopOpacity="0.08" />
-              <stop offset="100%" stopColor="#35d6ef" stopOpacity="0" />
+              <stop offset="0%" stopColor="#6cc49b" stopOpacity="0.35" />
+              <stop offset="60%" stopColor="#6cc49b" stopOpacity="0.08" />
+              <stop offset="100%" stopColor="#6cc49b" stopOpacity="0" />
             </linearGradient>
             <linearGradient id={id('wallFront')} x1="0" y1="0" x2="0.3" y2="1">
-              <stop offset="0%" stopColor="#f2e9d7" />
+              <stop offset="0%" stopColor="#f2ebdb" />
               <stop offset="62%" stopColor={cream} />
-              <stop offset="100%" stopColor="#ded2ba" />
+              <stop offset="100%" stopColor="#d8cdb8" />
             </linearGradient>
             <linearGradient id={id('wallSide')} x1="0" y1="0" x2="0.4" y2="1">
               <stop offset="0%" stopColor={creamSide} />
@@ -174,54 +174,52 @@ export function HouseScene({
               <stop offset="100%" stopColor={roofDark} />
             </linearGradient>
             <linearGradient id={id('roofEast')} x1="0" y1="0" x2="0.8" y2="1">
-              <stop offset="0%" stopColor="#9a5641" />
-              <stop offset="55%" stopColor="#854734" />
-              <stop offset="100%" stopColor="#6b3527" />
+              <stop offset="0%" stopColor="#263e44" />
+              <stop offset="55%" stopColor="#20363c" />
+              <stop offset="100%" stopColor="#172a2f" />
             </linearGradient>
             <linearGradient id={id('metal')} x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="#dfe8ee" />
-              <stop offset="100%" stopColor="#9fb2c0" />
+              <stop offset="0%" stopColor="#e7e2d6" />
+              <stop offset="100%" stopColor="#b9b4a6" />
             </linearGradient>
             <linearGradient id={id('glass')} x1="0" y1="0" x2="0.4" y2="1">
-              <stop offset="0%" stopColor="#ffe7a8" />
-              <stop offset="55%" stopColor="#f4c95d" />
-              <stop offset="100%" stopColor="#d9a53c" />
+              <stop offset="0%" stopColor="#f8d97a" />
+              <stop offset="55%" stopColor="#f2c230" />
+              <stop offset="100%" stopColor="#d6a81f" />
             </linearGradient>
             <radialGradient id={id('moonGlow')} cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="#f4c95d" stopOpacity="0.5" />
-              <stop offset="45%" stopColor="#f4c95d" stopOpacity="0.12" />
-              <stop offset="100%" stopColor="#f4c95d" stopOpacity="0" />
+              <stop offset="0%" stopColor="#efe6cc" stopOpacity="0.18" />
+              <stop offset="100%" stopColor="#efe6cc" stopOpacity="0" />
             </radialGradient>
             <radialGradient id={id('alarmGlow')} cx="36%" cy="38%" r="60%">
-              <stop offset="0%" stopColor="#ff6874" stopOpacity="0.5" />
-              <stop offset="55%" stopColor="#ff3d55" stopOpacity="0.12" />
-              <stop offset="100%" stopColor="#ff3d55" stopOpacity="0" />
+              <stop offset="0%" stopColor="#d94a35" stopOpacity="0.18" />
+              <stop offset="100%" stopColor="#d94a35" stopOpacity="0" />
             </radialGradient>
             <radialGradient id={id('warmPool')} cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="#f4c95d" stopOpacity="0.4" />
-              <stop offset="100%" stopColor="#f4c95d" stopOpacity="0" />
+              <stop offset="0%" stopColor="#f2c230" stopOpacity="0.22" />
+              <stop offset="100%" stopColor="#f2c230" stopOpacity="0" />
             </radialGradient>
             <linearGradient id={id('beam')} x1="0" y1="0" x2="0.4" y2="1">
-              <stop offset="0%" stopColor="#35d6ef" stopOpacity="0.26" />
-              <stop offset="60%" stopColor="#35d6ef" stopOpacity="0.07" />
-              <stop offset="100%" stopColor="#35d6ef" stopOpacity="0" />
+              <stop offset="0%" stopColor="#f2c230" stopOpacity="0.18" />
+              <stop offset="60%" stopColor="#f2c230" stopOpacity="0.05" />
+              <stop offset="100%" stopColor="#f2c230" stopOpacity="0" />
             </linearGradient>
             <linearGradient id={id('beamBasic')} x1="0" y1="0" x2="0.4" y2="1">
-              <stop offset="0%" stopColor="#f4c95d" stopOpacity="0.2" />
-              <stop offset="100%" stopColor="#f4c95d" stopOpacity="0" />
+              <stop offset="0%" stopColor="#efefe6" stopOpacity="0.12" />
+              <stop offset="100%" stopColor="#efefe6" stopOpacity="0" />
             </linearGradient>
             <filter id={id('softShadow')} x="-40%" y="-40%" width="180%" height="180%">
-              <feGaussianBlur stdDeviation="18" />
+              <feGaussianBlur stdDeviation="0" />
             </filter>
             <filter id={id('glow')} x="-80%" y="-80%" width="260%" height="260%">
-              <feGaussianBlur stdDeviation="7" result="b" />
+              <feGaussianBlur stdDeviation="0" result="b" />
               <feMerge>
                 <feMergeNode in="b" />
                 <feMergeNode in="SourceGraphic" />
               </feMerge>
             </filter>
             <filter id={id('glowStrong')} x="-120%" y="-120%" width="340%" height="340%">
-              <feGaussianBlur stdDeviation="12" result="b" />
+              <feGaussianBlur stdDeviation="0" result="b" />
               <feMerge>
                 <feMergeNode in="b" />
                 <feMergeNode in="SourceGraphic" />
@@ -238,10 +236,10 @@ export function HouseScene({
           {/* moon + stars */}
           <g opacity="0.9">
             <circle cx="142" cy="112" r="86" fill={`url(#${id('moonGlow')})`} />
-            <circle cx="142" cy="112" r="27" fill="#f7efd9" opacity="0.16" />
-            <circle cx="142" cy="112" r="18" fill="#fdf6e4" opacity="0.6" />
-            <circle cx="135" cy="107" r="4" fill="#dccfb2" opacity="0.35" />
-            <circle cx="149" cy="117" r="2.5" fill="#dccfb2" opacity="0.3" />
+            <circle cx="142" cy="112" r="27" fill="#efe6cc" opacity="0.16" />
+            <circle cx="142" cy="112" r="18" fill="#f5edda" opacity="0.6" />
+            <circle cx="135" cy="107" r="4" fill="#cdbfa3" opacity="0.35" />
+            <circle cx="149" cy="117" r="2.5" fill="#cdbfa3" opacity="0.3" />
             {[
               [236, 76, 1.4],
               [318, 132, 1.1],
@@ -253,7 +251,7 @@ export function HouseScene({
               [76, 236, 1.2],
               [932, 300, 1.1],
             ].map(([x, y, r], i) => (
-              <circle key={i} cx={x} cy={y} r={r} fill="#cfe6f5" opacity={0.45} />
+              <circle key={i} cx={x} cy={y} r={r} fill="#efe6cc" opacity={0.45} />
             ))}
           </g>
 
@@ -277,7 +275,7 @@ export function HouseScene({
                 [940, 510],
               ])}
               fill="none"
-              stroke="#57d9b2"
+              stroke="#6cc49b"
               strokeWidth="2"
               opacity="0.28"
             />
@@ -287,7 +285,7 @@ export function HouseScene({
                 [60, 510],
               ])}
               fill="none"
-              stroke="#57d9b2"
+              stroke="#6cc49b"
               strokeWidth="2"
               opacity="0.16"
             />
@@ -312,7 +310,7 @@ export function HouseScene({
               <g key={i} opacity={0.5}>
                 <path
                   d={`M${x} ${y} q-4 -9 -8 -11 M${x} ${y} q1 -10 4 -13 M${x} ${y} q6 -6 9 -8`}
-                  stroke="#57d9b2"
+                  stroke="#6cc49b"
                   strokeWidth="1.6"
                   fill="none"
                   opacity="0.35"
@@ -323,31 +321,31 @@ export function HouseScene({
 
           {/* tree */}
           <g>
-            <ellipse cx="174" cy="404" rx="46" ry="15" fill="#0a2020" opacity="0.55" />
-            <path d="M170 402 L166 336 L180 336 L178 404 Z" fill="#3b2c24" />
-            <path d="M166 336 Q160 300 172 288" stroke="#3b2c24" strokeWidth="5" fill="none" />
-            <circle cx="168" cy="300" r="42" fill="#1d5148" />
-            <circle cx="134" cy="316" r="28" fill="#1a4a44" />
-            <circle cx="203" cy="318" r="26" fill="#21594f" />
-            <circle cx="172" cy="272" r="27" fill="#256457" />
-            <circle cx="152" cy="292" r="10" fill="#57d9b2" opacity="0.18" />
-            <circle cx="188" cy="284" r="14" fill="#57d9b2" opacity="0.12" />
+            <ellipse cx="174" cy="404" rx="46" ry="15" fill="#061312" opacity="0.55" />
+            <path d="M170 402 L166 336 L180 336 L178 404 Z" fill="#40352b" />
+            <path d="M166 336 Q160 300 172 288" stroke="#40352b" strokeWidth="5" fill="none" />
+            <circle cx="168" cy="300" r="42" fill="#1e4038" />
+            <circle cx="134" cy="316" r="28" fill="#1e4038" />
+            <circle cx="203" cy="318" r="26" fill="#234a40" />
+            <circle cx="172" cy="272" r="27" fill="#2a564a" />
+            <circle cx="152" cy="292" r="10" fill="#6cc49b" opacity="0.18" />
+            <circle cx="188" cy="284" r="14" fill="#6cc49b" opacity="0.12" />
           </g>
 
           {/* bushes + rocks */}
           <g>
-            <ellipse cx="596" cy="612" rx="34" ry="12" fill="#0a2020" opacity="0.5" />
-            <circle cx="584" cy="602" r="18" fill="#1d5148" />
-            <circle cx="608" cy="606" r="14" fill="#21594f" />
-            <circle cx="598" cy="590" r="12" fill="#256457" />
-            <ellipse cx="250" cy="556" rx="20" ry="7" fill="#0a2020" opacity="0.5" />
-            <circle cx="243" cy="548" r="11" fill="#1d5148" />
-            <circle cx="256" cy="550" r="8" fill="#21594f" />
-            <ellipse cx="700" cy="632" rx="34" ry="11" fill="#0a2020" opacity="0.45" />
-            <circle cx="684" cy="622" r="16" fill="#1d5148" />
-            <circle cx="706" cy="624" r="12" fill="#21594f" />
-            <circle cx="696" cy="610" r="10" fill="#256457" />
-            <circle cx="721" cy="616" r="7" fill="#1d5148" />
+            <ellipse cx="596" cy="612" rx="34" ry="12" fill="#061312" opacity="0.5" />
+            <circle cx="584" cy="602" r="18" fill="#1e4038" />
+            <circle cx="608" cy="606" r="14" fill="#234a40" />
+            <circle cx="598" cy="590" r="12" fill="#2a564a" />
+            <ellipse cx="250" cy="556" rx="20" ry="7" fill="#061312" opacity="0.5" />
+            <circle cx="243" cy="548" r="11" fill="#1e4038" />
+            <circle cx="256" cy="550" r="8" fill="#234a40" />
+            <ellipse cx="700" cy="632" rx="34" ry="11" fill="#061312" opacity="0.45" />
+            <circle cx="684" cy="622" r="16" fill="#1e4038" />
+            <circle cx="706" cy="624" r="12" fill="#234a40" />
+            <circle cx="696" cy="610" r="10" fill="#2a564a" />
+            <circle cx="721" cy="616" r="7" fill="#1e4038" />
           </g>
 
           {/* stepping stones */}
@@ -364,11 +362,11 @@ export function HouseScene({
               <g key={i}>
                 <polygon
                   points={`${x},${y - 8} ${x + 15},${y} ${x},${y + 8} ${x - 15},${y}`}
-                  fill="#2c4d55"
+                  fill="#334d45"
                 />
                 <polygon
                   points={`${x},${y - 6} ${x + 11},${y} ${x},${y + 4} ${x - 11},${y}`}
-                  fill="#3b6570"
+                  fill="#5f7a6c"
                   opacity="0.55"
                 />
               </g>
@@ -376,14 +374,14 @@ export function HouseScene({
           </g>
 
           {/* house shadow */}
-          <ellipse cx="560" cy="512" rx="330" ry="118" fill="#04100f" opacity="0.55" filter={`url(#${id('softShadow')})`} />
+          <ellipse cx="560" cy="512" rx="330" ry="118" fill="#061312" opacity="0.55" filter={`url(#${id('softShadow')})`} />
 
           {/* warm light pool from the window */}
           <ellipse cx="462" cy="560" rx="120" ry="52" fill={`url(#${id('warmPool')})`} opacity="0.15" />
 
           {/* right wall (x = 4) */}
           <polygon points={poly([B, C, Cb, Bb])} fill={`url(#${id('wallSide')})`} />
-          <path d={`M${B[0]} ${B[1]} L${C[0]} ${C[1]}`} stroke="#a7987f" strokeWidth="1.5" opacity="0.4" />
+          <path d={`M${B[0]} ${B[1]} L${C[0]} ${C[1]}`} stroke="#8f8572" strokeWidth="1.5" opacity="0.4" />
           {[0.9, 1.55, 2.2].map((z) => (
             <line
               key={z}
@@ -391,7 +389,7 @@ export function HouseScene({
               y1={iso(4, 0, z)[1]}
               x2={iso(4, 3, z)[0]}
               y2={iso(4, 3, z)[1]}
-              stroke="#a7987f"
+              stroke="#8f8572"
               strokeWidth="1"
               opacity="0.22"
             />
@@ -404,13 +402,13 @@ export function HouseScene({
               [windowSide[2][0] + 4, windowSide[2][1] - 4],
               [windowSide[3][0] - 4, windowSide[3][1] - 4],
             ])}
-            fill="#f0e6d1"
+            fill="#efefe6"
           />
           <polygon points={poly(windowSide)} fill={`url(#${id('glass')})`} opacity="0.92" />
           <polygon
             points={poly(windowSide)}
             fill="none"
-            stroke="#8d6a2a"
+            stroke="#7a5a14"
             strokeWidth="1.6"
             opacity="0.5"
           />
@@ -419,7 +417,7 @@ export function HouseScene({
             y1={iso(4, 1.42, 1.28)[1]}
             x2={iso(4, 1.42, 2.12)[0]}
             y2={iso(4, 1.42, 2.12)[1]}
-            stroke="#8d6a2a"
+            stroke="#7a5a14"
             strokeWidth="1.4"
             opacity="0.5"
           />
@@ -428,7 +426,7 @@ export function HouseScene({
             y1={iso(4, 1.0, 1.7)[1]}
             x2={iso(4, 1.82, 1.7)[0]}
             y2={iso(4, 1.82, 1.7)[1]}
-            stroke="#8d6a2a"
+            stroke="#7a5a14"
             strokeWidth="1.4"
             opacity="0.5"
           />
@@ -440,7 +438,7 @@ export function HouseScene({
                 iso(4.04, 0.6, 0.2)[1]
               } L${iso(4.04, 0.98, 0.03)[0]} ${iso(4.04, 0.98, 0.03)[1]}`}
               fill="none"
-              stroke="#6f8494"
+              stroke="#5f6d67"
               strokeWidth="6.5"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -450,7 +448,7 @@ export function HouseScene({
                 iso(4.04, 0.6, 0.2)[1]
               } L${iso(4.04, 0.98, 0.03)[0]} ${iso(4.04, 0.98, 0.03)[1]}`}
               fill="none"
-              stroke="#c3d3dd"
+              stroke="#8c9a94"
               strokeWidth="3.6"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -463,7 +461,7 @@ export function HouseScene({
                 width="8"
                 height="4"
                 rx="1"
-                fill="#7f94a2"
+                fill="#5f6d67"
               />
             ))}
           </g>
@@ -471,8 +469,8 @@ export function HouseScene({
           {/* front-left wall (y = 3) */}
           <polygon points={poly([D, C, Cb, Db])} fill={`url(#${id('wallFront')})`} />
           {/* corner trim */}
-          <line x1={C[0]} y1={C[1]} x2={Cb[0]} y2={Cb[1]} stroke="#b9aa90" strokeWidth="3" opacity="0.7" />
-          <line x1={D[0]} y1={D[1]} x2={Db[0]} y2={Db[1]} stroke="#c8b99e" strokeWidth="2" opacity="0.55" />
+          <line x1={C[0]} y1={C[1]} x2={Cb[0]} y2={Cb[1]} stroke="#8f8572" strokeWidth="3" opacity="0.7" />
+          <line x1={D[0]} y1={D[1]} x2={Db[0]} y2={Db[1]} stroke="#9b907b" strokeWidth="2" opacity="0.55" />
           {/* siding lines */}
           {[0.7, 1.35, 2.0].map((z) => (
             <line
@@ -481,7 +479,7 @@ export function HouseScene({
               y1={iso(0, 3, z)[1]}
               x2={iso(4, 3, z)[0]}
               y2={iso(4, 3, z)[1]}
-              stroke="#b9aa90"
+              stroke="#8f8572"
               strokeWidth="1"
               opacity="0.2"
             />
@@ -490,11 +488,11 @@ export function HouseScene({
           {/* foundation plinth */}
           <polygon
             points={poly([iso(0, 3, 0), iso(4, 3, 0), iso(4, 3, 0.15), iso(0, 3, 0.15)])}
-            fill="#c4b79f"
+            fill="#c9bda6"
           />
           <polygon
             points={poly([iso(4, 0, 0), iso(4, 3, 0), iso(4, 3, 0.15), iso(4, 0, 0.15)])}
-            fill="#ad9f86"
+            fill="#a89d87"
           />
 
           {/* stone step */}
@@ -505,7 +503,7 @@ export function HouseScene({
               iso(1.78, 3.52, 0.14),
               iso(0.6, 3.52, 0.14),
             ])}
-            fill="#bcae96"
+            fill="#a89d87"
           />
           <polygon
             points={poly([
@@ -514,7 +512,7 @@ export function HouseScene({
               iso(1.78, 3.52, 0.14),
               iso(0.6, 3.52, 0.14),
             ])}
-            fill="#9d9079"
+            fill="#8f8572"
           />
 
           {/* door */}
@@ -525,12 +523,12 @@ export function HouseScene({
               [door[2][0] + 5, door[2][1]],
               [door[3][0] - 5, door[3][1]],
             ])}
-            fill="#f4ecd9"
+            fill="#efefe6"
           />
-          <polygon points={poly(door)} fill="#255267" />
-          <polygon points={poly(door)} fill="none" stroke="#15303e" strokeWidth="2" />
-          <polygon points={poly(doorGlow)} fill="#f4c95d" opacity="0.55" />
-          <polygon points={poly(doorGlow)} fill="#ffe9b1" opacity="0.22" filter={`url(#${id('glow')})`} />
+          <polygon points={poly(door)} fill="#1d4a52" />
+          <polygon points={poly(door)} fill="none" stroke="#0c2226" strokeWidth="2" />
+          <polygon points={poly(doorGlow)} fill="#f2c230" opacity="0.55" />
+          <polygon points={poly(doorGlow)} fill="#f8d97a" opacity="0.22" filter={`url(#${id('glow')})`} />
           <polygon
             points={poly([
               iso(0.82, 3, 0.32),
@@ -539,7 +537,7 @@ export function HouseScene({
               iso(0.82, 3, 1.52),
             ])}
             fill="none"
-            stroke="#3a6a7e"
+            stroke="#3f6b6f"
             strokeWidth="1.6"
             opacity="0.8"
           />
@@ -548,15 +546,15 @@ export function HouseScene({
             y1={iso(1.18, 3, 0)[1]}
             x2={iso(1.18, 3, 2.02)[0]}
             y2={iso(1.18, 3, 2.02)[1]}
-            stroke="#15303e"
+            stroke="#0c2226"
             strokeWidth="1.4"
             opacity="0.9"
           />
-          <circle cx={iso(1.5, 3, 1.02)[0]} cy={iso(1.5, 3, 1.02)[1]} r="3.2" fill="#f4c95d" />
+          <circle cx={iso(1.5, 3, 1.02)[0]} cy={iso(1.5, 3, 1.02)[1]} r="3.2" fill="#f2c230" />
           {/* house number */}
           <g transform={`translate(${iso(1.86, 3, 1.92)[0]}, ${iso(1.86, 3, 1.92)[1]}) rotate(-30)`}>
-            <rect x="-10" y="-9" width="20" height="16" rx="3" fill="#f4ecd9" />
-            <text x="0" y="3" textAnchor="middle" fontSize="9" fontWeight="700" fill="#24414f">
+            <rect x="-10" y="-9" width="20" height="16" rx="3" fill="#efefe6" />
+            <text x="0" y="3" textAnchor="middle" fontSize="9" fontWeight="700" fill="#101617">
               23
             </text>
           </g>
@@ -569,13 +567,13 @@ export function HouseScene({
               [windowMain[2][0] + 5, windowMain[2][1] - 5],
               [windowMain[3][0] - 5, windowMain[3][1] - 5],
             ])}
-            fill="#f6eeda"
+            fill="#efefe6"
           />
           <polygon points={poly(windowMain)} fill={`url(#${id('glass')})`} />
           <polygon
             points={poly(windowMain)}
             fill="none"
-            stroke="#8d6a2a"
+            stroke="#7a5a14"
             strokeWidth="2"
             opacity="0.55"
           />
@@ -584,7 +582,7 @@ export function HouseScene({
             y1={iso(3.28, 3, 1.12)[1]}
             x2={iso(3.28, 3, 2.06)[0]}
             y2={iso(3.28, 3, 2.06)[1]}
-            stroke="#8d6a2a"
+            stroke="#7a5a14"
             strokeWidth="1.6"
             opacity="0.55"
           />
@@ -593,13 +591,13 @@ export function HouseScene({
             y1={iso(2.9, 3, 1.59)[1]}
             x2={iso(3.66, 3, 1.59)[0]}
             y2={iso(3.66, 3, 1.59)[1]}
-            stroke="#8d6a2a"
+            stroke="#7a5a14"
             strokeWidth="1.6"
             opacity="0.55"
           />
           <polygon
             points={poly(windowMain)}
-            fill="#ffe9b1"
+            fill="#f8d97a"
             opacity="0.18"
             filter={`url(#${id('glow')})`}
           />
@@ -610,16 +608,16 @@ export function HouseScene({
               iso(2.35, 3.02, 0.35)[1]
             } L${iso(2.1, 3.05, 0.18)[0]} ${iso(2.1, 3.05, 0.18)[1]}`}
             fill="none"
-            stroke="#9fb2c0"
+            stroke="#8c9a94"
             strokeWidth="3.5"
             strokeLinecap="round"
             opacity="0.75"
           />
 
           {/* external electrical box */}
-          <polygon points={poly(box)} fill="#334a58" opacity="0.35" transform="translate(4,5)" />
+          <polygon points={poly(box)} fill="#0a1415" opacity="0.35" transform="translate(4,5)" />
           <polygon points={poly(box)} fill={`url(#${id('metal')})`} />
-          <polygon points={poly(box)} fill="none" stroke="#7e93a2" strokeWidth="1.6" />
+          <polygon points={poly(box)} fill="none" stroke="#5e6b65" strokeWidth="1.6" />
           <polygon
             points={poly([
               iso(2.02, 3, 1.22),
@@ -627,7 +625,7 @@ export function HouseScene({
               iso(2.68, 3, 1.36),
               iso(2.02, 3, 1.36),
             ])}
-            fill="#8fa4b2"
+            fill="#a7b0a8"
             opacity="0.55"
           />
           {/* meter window */}
@@ -638,7 +636,7 @@ export function HouseScene({
               iso(2.59, 3, 1.76),
               iso(2.11, 3, 1.76),
             ])}
-            fill="#0d2630"
+            fill="#0b1a1b"
           />
           <polygon
             points={poly([
@@ -647,16 +645,16 @@ export function HouseScene({
               iso(2.59, 3, 1.76),
               iso(2.11, 3, 1.76),
             ])}
-            fill="#35d6ef"
+            fill="#f2c230"
             opacity="0.24"
           />
-          <circle cx={iso(2.3, 3, 1.62)[0]} cy={iso(2.3, 3, 1.62)[1]} r="5" fill="#9fe8f4" opacity="0.5" />
+          <circle cx={iso(2.3, 3, 1.62)[0]} cy={iso(2.3, 3, 1.62)[1]} r="5" fill="#f8d97a" opacity="0.5" />
           <line
             x1={iso(2.3, 3, 1.62)[0]}
             y1={iso(2.3, 3, 1.62)[1]}
             x2={iso(2.42, 3, 1.7)[0]}
             y2={iso(2.42, 3, 1.7)[1]}
-            stroke="#e9f9fc"
+            stroke="#f8f2df"
             strokeWidth="1.2"
             opacity="0.8"
           />
@@ -669,14 +667,14 @@ export function HouseScene({
               width="11"
               height="6"
               rx="1.4"
-              fill="#344d5c"
+              fill="#2a3634"
               transform={`rotate(-30 ${iso(2.12 + offset, 3, 1.28)[0]} ${iso(2.12 + offset, 3, 1.28)[1]})`}
             />
           ))}
           {/* warning sticker */}
           <g transform={`translate(${iso(2.58, 3, 1.1)[0]}, ${iso(2.58, 3, 1.1)[1]}) rotate(-30)`}>
-            <circle r="4.5" fill="#f4c95d" />
-            <path d="M0.8 -2.4 L-1.8 0.6 L-0.2 0.6 L-0.8 2.8 L1.9 -0.3 L0.3 -0.3 Z" fill="#4a3608" />
+            <circle r="4.5" fill="#f2c230" />
+            <path d="M0.8 -2.4 L-1.8 0.6 L-0.2 0.6 L-0.8 2.8 L1.9 -0.3 L0.3 -0.3 Z" fill="#101617" />
           </g>
 
           {/* hip roof */}
@@ -690,7 +688,7 @@ export function HouseScene({
               const y1 = ridge1[1] + (eaveS1[1] - ridge1[1]) * t
               const x2 = ridge2[0] + (eaveS2[0] - ridge2[0]) * t
               const y2 = ridge2[1] + (eaveS2[1] - ridge2[1]) * t
-              return <line key={t} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#5d2f24" strokeWidth="1.5" />
+              return <line key={t} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#172a2f" strokeWidth="1.5" />
             })}
           </g>
 
@@ -701,21 +699,21 @@ export function HouseScene({
               const ay = ridge2[1] + (eaveN2[1] - ridge2[1]) * t
               const bx = ridge2[0] + (eaveS2[0] - ridge2[0]) * t
               const by = ridge2[1] + (eaveS2[1] - ridge2[1]) * t
-              return <line key={t} x1={ax} y1={ay} x2={bx} y2={by} stroke="#5d2f24" strokeWidth="1.3" />
+              return <line key={t} x1={ax} y1={ay} x2={bx} y2={by} stroke="#172a2f" strokeWidth="1.3" />
             })}
           </g>
 
           {/* fascia, hips and ridge */}
-          <polyline points={poly([eaveS1, eaveS2])} fill="none" stroke="#6f382b" strokeWidth="7" strokeLinejoin="round" />
-          <polyline points={poly([eaveN2, eaveS2])} fill="none" stroke="#663325" strokeWidth="7" strokeLinejoin="round" />
-          <polyline points={poly([eaveS1, ridge1])} fill="none" stroke="#b06a52" strokeWidth="5" strokeLinecap="round" />
-          <polyline points={poly([ridge2, eaveN2])} fill="none" stroke="#7a402f" strokeWidth="4" strokeLinecap="round" />
-          <polyline points={poly([ridge2, eaveS2])} fill="none" stroke="#b06a52" strokeWidth="5" strokeLinecap="round" />
-          <polyline points={poly([ridge1, ridge2])} fill="none" stroke="#d08c70" strokeWidth="6" strokeLinecap="round" />
+          <polyline points={poly([eaveS1, eaveS2])} fill="none" stroke="#172a2f" strokeWidth="7" strokeLinejoin="round" />
+          <polyline points={poly([eaveN2, eaveS2])} fill="none" stroke="#14262a" strokeWidth="7" strokeLinejoin="round" />
+          <polyline points={poly([eaveS1, ridge1])} fill="none" stroke="#4a6a70" strokeWidth="5" strokeLinecap="round" />
+          <polyline points={poly([ridge2, eaveN2])} fill="none" stroke="#1a2c31" strokeWidth="4" strokeLinecap="round" />
+          <polyline points={poly([ridge2, eaveS2])} fill="none" stroke="#4a6a70" strokeWidth="5" strokeLinecap="round" />
+          <polyline points={poly([ridge1, ridge2])} fill="none" stroke="#7f989b" strokeWidth="6" strokeLinecap="round" />
           <polyline
             points={poly([ridge1, ridge2])}
             fill="none"
-            stroke="#f0c3ae"
+            stroke="#a9bfc1"
             strokeWidth="1.5"
             strokeLinecap="round"
             opacity="0.55"
@@ -739,7 +737,7 @@ export function HouseScene({
                   [222, 566],
                 ])}
                 fill="none"
-                stroke={guardian ? '#35d6ef' : '#f4c95d'}
+                stroke={guardian ? '#f2c230' : '#f2c230'}
                 strokeWidth="1.2"
                 strokeDasharray="5 7"
                 opacity="0.4"
@@ -750,7 +748,7 @@ export function HouseScene({
                   [470, 512],
                 ])}
                 fill="none"
-                stroke={guardian ? '#35d6ef' : '#f4c95d'}
+                stroke={guardian ? '#f2c230' : '#f2c230'}
                 strokeWidth="1.2"
                 strokeDasharray="5 7"
                 opacity="0.28"
@@ -767,8 +765,8 @@ export function HouseScene({
                 [488, 502],
                 [398, 458],
               ])}
-              fill={planned ? 'rgba(244, 201, 93, 0.05)' : 'rgba(53, 214, 239, 0.04)'}
-              stroke={planned ? '#f4c95d' : '#35d6ef'}
+              fill={planned ? 'rgba(242, 194, 48, 0.06)' : 'rgba(242, 194, 48, 0.04)'}
+              stroke={planned ? '#f2c230' : '#f2c230'}
               strokeWidth="1.6"
               strokeDasharray="7 7"
               opacity="0.6"
@@ -779,10 +777,10 @@ export function HouseScene({
           {/* vibration sensor on the box */}
           {guardian && (
             <g transform={`translate(${sensorPos[0]}, ${sensorPos[1]})`}>
-              <rect x="-8" y="-7" width="16" height="13" rx="4" fill="#173042" stroke="#35d6ef" strokeWidth="1.3" />
-              <circle cx="0" cy="-0.5" r="3.4" fill={signals.vibration ? '#57d9b2' : '#35d6ef'} opacity="0.9" />
-              <line x1="5" y1="-7" x2="9" y2="-17" stroke="#35d6ef" strokeWidth="1.6" strokeLinecap="round" />
-              <circle cx="9" cy="-18" r="2.4" fill="#57d9b2" />
+              <rect x="-8" y="-7" width="16" height="13" rx="4" fill="#0e2224" stroke="#f2c230" strokeWidth="1.3" />
+              <circle cx="0" cy="-0.5" r="3.4" fill={signals.vibration ? '#6cc49b' : '#f2c230'} opacity="0.9" />
+              <line x1="5" y1="-7" x2="9" y2="-17" stroke="#f2c230" strokeWidth="1.6" strokeLinecap="round" />
+              <circle cx="9" cy="-18" r="2.4" fill="#6cc49b" />
             </g>
           )}
 
@@ -796,7 +794,7 @@ export function HouseScene({
                   cy={boxCenter[1]}
                   r={r}
                   fill="none"
-                  stroke="#57d9b2"
+                  stroke="#6cc49b"
                   strokeWidth="2"
                   className={`wave-pulse ${i === 1 ? 'wave-pulse--2' : i === 2 ? 'wave-pulse--3' : ''}`}
                 />
@@ -806,35 +804,35 @@ export function HouseScene({
 
           {/* camera */}
           <g transform={`translate(${cameraPos[0]}, ${cameraPos[1]}) scale(1.4)`}>
-            <line x1="12" y1="4" x2="22" y2="11" stroke="#8b9aa6" strokeWidth="4" strokeLinecap="round" />
+            <line x1="12" y1="4" x2="22" y2="11" stroke="#7d8a84" strokeWidth="4" strokeLinecap="round" />
             <g transform="rotate(18)">
-              {guardian && <circle cx="-15" cy="0" r="12" fill="#35d6ef" opacity="0.16" filter={`url(#${id('glow')})`} />}
-              <rect x="-24" y="-9" width="34" height="18" rx="6" fill="#eef3f6" />
-              <rect x="-24" y="-9" width="34" height="18" rx="6" fill="none" stroke="#a7b8c4" strokeWidth="1.2" />
-              <path d="M10 -6 L18 0 L10 6 Z" fill="#c7d3db" />
-              <circle cx="-15" cy="0" r="7" fill="#16222e" />
-              <circle cx="-16.5" cy="-1.8" r="2.4" fill="#9fe8f4" opacity="0.85" />
-              <circle cx="-13" cy="2" r="1.2" fill="#57d9b2" opacity="0.8" />
+              {guardian && <circle cx="-15" cy="0" r="12" fill="#f2c230" opacity="0.16" filter={`url(#${id('glow')})`} />}
+              <rect x="-24" y="-9" width="34" height="18" rx="6" fill="#efefe6" />
+              <rect x="-24" y="-9" width="34" height="18" rx="6" fill="none" stroke="#a8b0a8" strokeWidth="1.2" />
+              <path d="M10 -6 L18 0 L10 6 Z" fill="#b9c0b5" />
+              <circle cx="-15" cy="0" r="7" fill="#0b1112" />
+              <circle cx="-16.5" cy="-1.8" r="2.4" fill="#f8d97a" opacity="0.85" />
+              <circle cx="-13" cy="2" r="1.2" fill="#6cc49b" opacity="0.8" />
             </g>
             <circle
               cx="11"
               cy="12"
               r="3"
-              fill={guardian ? '#57d9b2' : '#ff6874'}
+              fill={guardian ? '#6cc49b' : '#d94a35'}
               className="blink"
             />
           </g>
 
           {/* buzzer / siren under the eave */}
           <g transform={`translate(${buzzerPos[0]}, ${buzzerPos[1]})`}>
-            <rect x="-7" y="-8" width="14" height="5" rx="2" fill="#37464f" />
-            <path d="M-10 8 Q-10 -6 0 -6 Q10 -6 10 8 Z" fill={signals.alarm ? '#ff6874' : '#8f5560'} />
-            <path d="M-10 8 Q-10 -6 0 -6 Q10 -6 10 8 Z" fill="none" stroke="#4a2a30" strokeWidth="1" />
-            <rect x="-11" y="8" width="22" height="4" rx="2" fill="#37464f" />
+            <rect x="-7" y="-8" width="14" height="5" rx="2" fill="#2a3634" />
+            <path d="M-10 8 Q-10 -6 0 -6 Q10 -6 10 8 Z" fill={signals.alarm ? '#d94a35' : '#6e3a33'} />
+            <path d="M-10 8 Q-10 -6 0 -6 Q10 -6 10 8 Z" fill="none" stroke="#2a1714" strokeWidth="1" />
+            <rect x="-11" y="8" width="22" height="4" rx="2" fill="#2a3634" />
             {signals.alarm && (
               <g>
-                <circle r="24" fill="none" stroke="#ff6874" strokeWidth="2" className="alarm-ring" />
-                <circle r="24" fill="none" stroke="#ff6874" strokeWidth="1.4" className="alarm-ring" style={{ animationDelay: '0.4s' }} />
+                <circle r="24" fill="none" stroke="#d94a35" strokeWidth="2" className="alarm-ring" />
+                <circle r="24" fill="none" stroke="#d94a35" strokeWidth="1.4" className="alarm-ring" style={{ animationDelay: '0.4s' }} />
               </g>
             )}
           </g>
@@ -851,7 +849,7 @@ export function HouseScene({
                 strokeWidth="1.6"
                 strokeDasharray="3 6"
                 opacity="0.8"
-                className="spin-slow"
+                
               />
               <circle
                 cx={focus.x}
@@ -875,8 +873,8 @@ export function HouseScene({
                 [cx, cy + 24],
                 [cx - 54, cy],
               ])}
-              fill={signals.hand ? 'rgba(87, 217, 178, 0.08)' : 'rgba(53, 214, 239, 0.04)'}
-              stroke={signals.hand ? '#57d9b2' : '#35d6ef'}
+              fill={signals.hand ? 'rgba(108, 196, 155, 0.10)' : 'rgba(242, 194, 48, 0.05)'}
+              stroke={signals.hand ? '#6cc49b' : '#f2c230'}
               strokeWidth="1.2"
               strokeDasharray="4 8"
               opacity="0.55"
@@ -906,7 +904,7 @@ export function HouseScene({
                 height="150"
                 rx="6"
                 fill="none"
-                stroke="#57d9b2"
+                stroke="#6cc49b"
                 strokeWidth="1.5"
                 strokeDasharray="10 6"
                 opacity="0.75"
@@ -921,7 +919,7 @@ export function HouseScene({
                   key={i}
                   d={`M${x} ${y + 16 * sy} L${x} ${y} L${x + 16 * sx} ${y}`}
                   fill="none"
-                  stroke="#57d9b2"
+                  stroke="#6cc49b"
                   strokeWidth="3"
                   strokeLinecap="round"
                 />
@@ -937,7 +935,7 @@ export function HouseScene({
                 cy={boxCenter[1]}
                 r="66"
                 fill="none"
-                stroke="#f4c95d"
+                stroke="#f2c230"
                 strokeWidth="2"
                 strokeDasharray="6 8"
                 opacity="0.9"
@@ -947,7 +945,7 @@ export function HouseScene({
                 cy={boxCenter[1]}
                 r="80"
                 fill="none"
-                stroke="#f4c95d"
+                stroke="#f2c230"
                 strokeWidth="1"
                 opacity="0.3"
                 className="ring-pulse"
@@ -960,7 +958,7 @@ export function HouseScene({
             <g>
               <rect width="1000" height="720" fill={`url(#${id('alarmGlow')})`} className="alarm-flash" />
               <g transform={`translate(${buzzerPos[0]}, ${buzzerPos[1]})`}>
-                <circle r="14" fill="#ff6874" filter={`url(#${id('glowStrong')})`} opacity="0.65" />
+                <circle r="14" fill="#d94a35" filter={`url(#${id('glowStrong')})`} opacity="0.65" />
               </g>
             </g>
           )}
@@ -971,14 +969,14 @@ export function HouseScene({
               <rect
                 width="1000"
                 height="720"
-                fill={planned ? '#0d1020' : '#050a12'}
+                fill={planned ? '#0d1a1b' : '#081416'}
                 opacity={planned ? '0.6' : '0.72'}
               />
               <rect
                 width="1000"
                 height="720"
                 fill="none"
-                stroke={planned ? '#f4c95d' : '#ff6874'}
+                stroke={planned ? '#f2c230' : '#d94a35'}
                 strokeWidth="2"
                 opacity="0.28"
               />
@@ -989,7 +987,7 @@ export function HouseScene({
                   y1={y}
                   x2="1000"
                   y2={y}
-                  stroke={planned ? '#f4c95d' : '#ff6874'}
+                  stroke={planned ? '#f2c230' : '#d94a35'}
                   strokeWidth="20"
                   opacity="0.03"
                 />
@@ -1010,7 +1008,7 @@ export function HouseScene({
         </div>
       )}
 
-      <div className="scene-scanlines" />
+      <div />
       <div className="scene-vignette" />
 
       {/* contextual tags */}
@@ -1018,17 +1016,17 @@ export function HouseScene({
         <>
           {guardian && idleDevices && (highlight === 'camera' || highlight === 'house') && (
             <span className="scene-tag scene-tag--cyan" style={tagStyle(cameraPos, -36, -34)}>
-              <CameraIcon size={12} /> Câmera · visão
+              <CameraIcon size={12} /> CAM 01 / visão
             </span>
           )}
           {guardian && idleDevices && (highlight === 'sensor' || highlight === 'box' || highlight === 'house') && (
             <span className="scene-tag scene-tag--mint" style={tagStyle(boxCenter, 30, 26)}>
-              <Radio size={12} /> Sensor de vibração
+              <Radio size={12} /> SV 02 / vibração
             </span>
           )}
           {!guardian && highlight === 'camera' && (
             <span className="scene-tag scene-tag--gold" style={tagStyle(cameraPos, -34, -34)}>
-              <CameraIcon size={12} /> Câmera · apenas grava
+              <CameraIcon size={12} /> CAM 01 / apenas grava
             </span>
           )}
           {!guardian && highlight === 'box' && (
@@ -1056,7 +1054,7 @@ export function HouseScene({
 
       {planned && signals.tamper && (
         <span className="scene-tag scene-tag--gold" style={{ left: 14, top: 54 }}>
-          <ShieldAlert size={12} /> Adulteração física · planejado
+          <ShieldAlert size={12} /> Adulteração / planejado
         </span>
       )}
 

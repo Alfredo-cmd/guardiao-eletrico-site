@@ -40,17 +40,19 @@ export function PlaybackControls({
             aria-label="Etapa anterior"
             title="Etapa anterior (←)"
           >
-            <ChevronLeft size={17} />
+            <ChevronLeft size={16} />
           </button>
           <button
             type="button"
-            className="btn btn-primary !rounded-xl !px-3.5 !py-2"
+            className="btn btn-primary btn-sm !px-3"
             onClick={onPlay}
             aria-label={playing ? 'Pausar' : isSummary ? 'Repetir demonstração' : 'Continuar'}
             title={playing ? 'Pausar (espaço)' : 'Continuar (espaço)'}
           >
-            {playing ? <Pause size={16} fill="currentColor" /> : <Play size={16} fill="currentColor" />}
-            <span className="hidden text-[13px] sm:inline">{playing ? 'Pausar' : isSummary ? 'Repetir' : 'Continuar'}</span>
+            {playing ? <Pause size={15} fill="currentColor" /> : <Play size={15} fill="currentColor" />}
+            <span className="hidden text-[12.5px] sm:inline">
+              {playing ? 'Pausar' : isSummary ? 'Repetir' : 'Continuar'}
+            </span>
           </button>
           <button
             type="button"
@@ -60,16 +62,16 @@ export function PlaybackControls({
             aria-label="Próxima etapa"
             title="Próxima etapa (→)"
           >
-            <ChevronRight size={17} />
+            <ChevronRight size={16} />
           </button>
           <button
             type="button"
-            className="btn btn-quiet btn-sm !px-2.5"
+            className="btn btn-quiet btn-sm !px-2"
             onClick={onRestart}
             aria-label="Reiniciar demonstração"
             title="Reiniciar (R)"
           >
-            <RotateCcw size={16} />
+            <RotateCcw size={15} />
           </button>
         </div>
 
@@ -78,7 +80,12 @@ export function PlaybackControls({
             const active = i === index
             const done = i < index
             return (
-              <span className="timeline-seg" key={step.id} data-phase={step.phase} data-planned={step.planned ? 'true' : undefined}>
+              <span
+                className="timeline-seg"
+                key={step.id}
+                data-phase={step.phase}
+                data-planned={step.planned ? 'true' : undefined}
+              >
                 <span
                   key={active ? `active-${index}` : 'fill'}
                   className={active ? `is-active ${playing ? 'is-running' : ''}` : ''}
@@ -92,9 +99,11 @@ export function PlaybackControls({
           })}
         </div>
 
-        <span className="ml-auto flex flex-none items-center gap-2 font-mono text-[10px] uppercase tracking-[0.12em] text-muted">
-          <span className="hidden sm:inline">{phase === 'camera' ? 'Câmera' : phase === 'guardian' ? 'Guardião' : 'Fim'}</span>
-          <span className="rounded-md border border-white/10 bg-black/20 px-1.5 py-0.5 text-paper/80">
+        <span className="ml-auto flex flex-none items-center gap-2 font-mono text-[9px] uppercase tracking-[0.04em] text-muted">
+          <span className="hidden sm:inline">
+            {phase === 'camera' ? 'Câmera' : phase === 'guardian' ? 'Guardião' : 'Fim'}
+          </span>
+          <span className="border border-paper/20 px-1.5 py-0.5 text-paper/80">
             {String(stepNumber).padStart(2, '0')}/{String(total).padStart(2, '0')}
           </span>
         </span>
@@ -105,7 +114,12 @@ export function PlaybackControls({
           const active = i === index
           const done = i < index
           return (
-            <span className="timeline-seg" key={step.id} data-phase={step.phase} data-planned={step.planned ? 'true' : undefined}>
+            <span
+              className="timeline-seg"
+              key={step.id}
+              data-phase={step.phase}
+              data-planned={step.planned ? 'true' : undefined}
+            >
               <span
                 key={active ? `m-active-${index}` : 'm-fill'}
                 className={active ? `is-active ${playing ? 'is-running' : ''}` : ''}

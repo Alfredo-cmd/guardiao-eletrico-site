@@ -1,6 +1,5 @@
 import {
   ArrowLeft,
-  ArrowRight,
   Camera,
   Check,
   Clock3,
@@ -39,110 +38,108 @@ const planned = [
 
 export function HowItWorksScreen({ onBack, onCompare }: HowItWorksScreenProps) {
   return (
-    <div className="app-shell">
-      <header className="mx-auto flex w-full max-w-[1320px] items-center justify-between gap-3 px-5 py-5 sm:px-8">
-        <Brand onClick={onBack} />
-        <button type="button" className="btn btn-ghost btn-sm" onClick={onBack}>
-          <ArrowLeft size={15} /> Voltar
-        </button>
+    <div className="app-shell bg-paper text-ink">
+      <header className="topbar">
+        <div className="topbar-inner">
+          <Brand onClick={onBack} />
+          <button type="button" className="btn btn-ghost btn-sm" onClick={onBack}>
+            <ArrowLeft size={15} /> Voltar
+          </button>
+        </div>
       </header>
 
-      <main className="mx-auto w-full max-w-[1320px] flex-1 px-5 pb-10 sm:px-8">
-        <div className="max-w-[760px]">
-          <div className="flex items-center gap-3">
-            <span className="h-px w-8 bg-linear-to-r from-transparent to-[#35D6EF]" />
-            <span className="eyebrow eyebrow-cyan">Entenda a lógica</span>
+      <main className="page flex-1">
+        <div className="flex flex-wrap items-end justify-between gap-4 border-b-2 border-ink pb-5">
+          <div>
+            <span className="folio">
+              <strong>Ficha 003</strong> / lógica do sistema
+            </span>
+            <h1 className="display mt-3 text-[clamp(2.8rem,5.4vw,4.8rem)]">Como o Guardião pensa?</h1>
+            <p className="mt-3 max-w-[62ch] text-[13.5px] leading-relaxed text-muted">
+              O protótipo atual não tenta adivinhar tudo. Ele combina dois sinais independentes — imagem e vibração —
+              e só dispara o alarme local quando os dois confirmam a mesma situação.
+            </p>
           </div>
-          <h1 className="mt-3 font-display text-[clamp(2.2rem,4.6vw,3.6rem)] font-semibold leading-[0.98] tracking-[-0.03em]">
-            Como o Guardião <span className="gradient-text">pensa?</span>
-          </h1>
-          <p className="mt-3 max-w-[600px] text-[13.5px] leading-relaxed text-muted sm:text-[14.5px]">
-            O protótipo atual não tenta adivinhar tudo. Ele combina dois sinais independentes — imagem e vibração — e
-            só dispara o alarme local quando os dois confirmam a mesma situação.
-          </p>
+          <span className="stamp stamp--planned">Interativo</span>
         </div>
 
-        <div className="mt-7 grid items-start gap-4 lg:grid-cols-[1.05fr_0.95fr]">
+        <div className="mt-8 grid items-start gap-x-10 gap-y-8 lg:grid-cols-[1.05fr_0.95fr]">
           <ExplainerFlow />
 
-          <div className="flex flex-col gap-4">
-            <section className="panel p-5">
-              <div className="flex items-center justify-between gap-2">
-                <h2 className="font-display text-[17px] font-semibold text-paper">Protótipo atual</h2>
-                <span className="chip chip-live chip-dot">Implementado</span>
+          <div className="flex flex-col gap-7">
+            <section className="border-t-2 border-ink pt-3">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <h2 className="text-[18px] font-bold">Protótipo atual</h2>
+                <span className="stamp stamp--safe">Implementado</span>
               </div>
               <p className="mt-1.5 text-[11.5px] leading-snug text-muted">
                 O que já faz parte do estágio descrito pelo projeto.
               </p>
-              <ul className="mt-3 space-y-2">
+              <ul className="mt-3">
                 {implemented.map(({ icon: Icon, text }) => (
-                  <li key={text} className="flex items-start gap-2.5">
-                    <span className="mt-0.5 grid h-6 w-6 flex-none place-items-center rounded-md border border-[#57D9B2]/25 bg-[#57D9B2]/8 text-[#57D9B2]">
+                  <li key={text} className="flex items-start gap-2.5 border-b border-ink/15 py-2">
+                    <span className="mt-0.5 grid h-6 w-6 flex-none place-items-center border border-ink/25 text-ink">
                       <Icon size={12.5} />
                     </span>
-                    <span className="text-[12px] leading-snug text-paper/80">{text}</span>
+                    <span className="text-[12px] leading-snug text-[#3F4A44]">{text}</span>
                   </li>
                 ))}
               </ul>
             </section>
 
-            <section className="panel p-5">
-              <div className="flex items-center justify-between gap-2">
-                <h2 className="font-display text-[17px] font-semibold text-paper">Funcionalidades planejadas</h2>
-                <span className="chip chip-planned">Futuro</span>
+            <section className="border-t-2 border-ink pt-3">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <h2 className="text-[18px] font-bold">Funcionalidades planejadas</h2>
+                <span className="stamp stamp--planned">Futuro</span>
               </div>
               <p className="mt-1.5 text-[11.5px] leading-snug text-muted">
                 A simulação ilustra a visão futura. Nada aqui é enviado de verdade.
               </p>
-              <ul className="mt-3 space-y-2">
+              <ul className="mt-3">
                 {planned.map(({ icon: Icon, text }) => (
-                  <li key={text} className="flex items-start gap-2.5">
-                    <span className="mt-0.5 grid h-6 w-6 flex-none place-items-center rounded-md border border-[#F4C95D]/25 bg-[#F4C95D]/8 text-[#F4C95D]">
+                  <li key={text} className="flex items-start gap-2.5 border-b border-ink/15 py-2">
+                    <span className="mt-0.5 grid h-6 w-6 flex-none place-items-center border border-ink/25 text-ink">
                       <Icon size={12.5} />
                     </span>
-                    <span className="text-[12px] leading-snug text-paper/80">{text}</span>
+                    <span className="text-[12px] leading-snug text-[#3F4A44]">{text}</span>
                   </li>
                 ))}
               </ul>
-              <p className="mt-3 flex items-start gap-1.5 rounded-lg border border-[#F4C95D]/20 bg-[#F4C95D]/4 px-2.5 py-2 text-[10.5px] leading-snug text-[#FFE9B1]/75">
+              <p className="mt-3 flex items-start gap-2 border-l-2 border-safety pl-3 text-[10.5px] leading-snug text-muted">
                 <Clock3 size={12} className="mt-0.5 flex-none" />
-                Obstrução exige tratamento de iluminação, perda de sinal e falsos positivos. Não é trivial nem infalível.
+                Obstrução exige tratamento de iluminação, perda de sinal e falsos positivos. Não é trivial nem
+                infalível.
               </p>
             </section>
 
-            <section className="panel-flat p-4">
+            <section className="border-t border-ink/25 pt-3">
               <div className="flex items-center gap-2">
-                <Info size={14} className="text-[#9DB0C7]" />
-                <h2 className="font-display text-[13.5px] font-semibold text-paper/90">Limites desta demonstração</h2>
+                <Info size={14} className="text-ink" />
+                <h2 className="text-[13.5px] font-bold">Limites desta demonstração</h2>
               </div>
-              <ul className="mt-2 space-y-1 text-[11px] leading-snug text-muted">
-                <li className="flex gap-1.5">
-                  <Check size={11} className="mt-0.5 flex-none text-[#57D9B2]" /> Nenhuma chamada de emergência ou
-                  notificação real é enviada.
-                </li>
-                <li className="flex gap-1.5">
-                  <Check size={11} className="mt-0.5 flex-none text-[#57D9B2]" /> A localização é um endereço cadastrado,
-                  não GPS em tempo real.
-                </li>
-                <li className="flex gap-1.5">
-                  <Check size={11} className="mt-0.5 flex-none text-[#57D9B2]" /> O sistema detecta sinais de possível
-                  interferência — não impede todos os furtos.
-                </li>
+              <ul className="mt-2">
+                {[
+                  'Nenhuma chamada de emergência ou notificação real é enviada.',
+                  'A localização é um endereço cadastrado, não GPS em tempo real.',
+                  'O sistema detecta sinais de possível interferência — não impede todos os furtos.',
+                ].map((item) => (
+                  <li key={item} className="flex gap-2 border-b border-ink/10 py-1.5 text-[11px] leading-snug text-muted">
+                    <Check size={11} className="mt-0.5 flex-none text-safe" />
+                    {item}
+                  </li>
+                ))}
               </ul>
             </section>
           </div>
         </div>
 
-        <div className="mt-6 flex flex-col gap-2 rounded-2xl border border-white/8 bg-white/2 p-4 sm:flex-row sm:items-center">
-          <p className="text-[12px] text-muted">
-            Quer ver a mesma cena nas duas versões, do início ao fim?
-          </p>
+        <div className="console mt-10 flex flex-col gap-3 px-4 py-4 sm:flex-row sm:items-center">
+          <p className="text-[12px] text-paper/70">Quer ver a mesma cena nas duas versões, do início ao fim?</p>
           <div className="flex flex-col gap-2 sm:ml-auto sm:flex-row">
             <button type="button" className="btn btn-primary btn-sm" onClick={onCompare}>
               <Play size={14} fill="currentColor" /> Comparação completa
-              <ArrowRight size={14} />
             </button>
-            <button type="button" className="btn btn-quiet btn-sm" onClick={onBack}>
+            <button type="button" className="btn btn-ghost btn-sm" onClick={onBack}>
               Voltar ao início
             </button>
           </div>

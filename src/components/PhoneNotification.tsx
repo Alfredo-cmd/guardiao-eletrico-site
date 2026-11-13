@@ -12,10 +12,10 @@ export function PhoneNotification({ variant = 'notification' }: PhoneNotificatio
   return (
     <motion.div
       className={`phone-shell ${isAlarm ? 'phone-shell--alarm' : ''}`}
-      initial={{ opacity: 0, y: -14, scale: 0.94, rotate: 2 }}
-      animate={{ opacity: 1, y: 0, scale: 1, rotate: 0 }}
-      exit={{ opacity: 0, y: -10, scale: 0.96 }}
-      transition={{ type: 'spring', stiffness: 210, damping: 22 }}
+      initial={{ opacity: 0, y: 8 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 6 }}
+      transition={{ duration: 0.22, ease: 'easeOut' }}
       role="status"
       aria-label={
         isAlarm
@@ -25,92 +25,92 @@ export function PhoneNotification({ variant = 'notification' }: PhoneNotificatio
     >
       <div className="phone-screen">
         <div className="phone-notch" />
-        <div className="px-3 pb-3 pt-2">
-          <div className="flex items-center justify-between font-mono text-[9px] text-white/55">
+        <div className="px-2.5 pb-2.5 pt-1.5">
+          <div className="flex items-center justify-between font-mono text-[8.5px] text-paper/50">
             <span>{DEMO_TIME}</span>
-            <span className="flex items-center gap-1.5">
-              <Wifi size={10} />
-              <BatteryFull size={11} />
+            <span className="flex items-center gap-2">
+              <Wifi size={9} />
+              <BatteryFull size={10} />
             </span>
           </div>
 
           {isAlarm ? (
-            <div className="mt-2 rounded-xl border border-[#FF6874]/45 bg-[#FF6874]/10 p-2.5 text-center">
-              <div className="flex items-center gap-2 text-left">
-                <span className="grid h-7 w-7 flex-none place-items-center rounded-lg bg-linear-to-br from-[#35D6EF] to-[#57D9B2] text-[#06131F]">
+            <div className="mt-1.5 border-l-4 border-[#D94A35] bg-paper p-2.5 text-ink">
+              <div className="flex items-center gap-2">
+                <span className="grid h-7 w-7 flex-none place-items-center bg-[#F2C230] text-ink">
                   <ShieldAlert size={14} strokeWidth={2.4} />
                 </span>
                 <span className="min-w-0 flex-1">
-                  <span className="block truncate text-[10px] font-semibold text-white/90">Guardião Elétrico</span>
-                  <span className="block font-mono text-[7.5px] uppercase tracking-[0.16em] text-[#FF8A94]">
-                    app aberto · alarme
+                  <span className="block truncate text-[10px] font-bold leading-tight">Guardião Elétrico</span>
+                  <span className="block font-mono text-[7px] uppercase tracking-[0.05em] text-[#D94A35]">
+                    app aberto / alarme
                   </span>
                 </span>
               </div>
 
-              <div className="relative mx-auto mt-2 grid h-12 w-12 place-items-center">
-                <span className="absolute inset-0 rounded-full border border-[#FF6874]/45 ring-pulse" />
-                <span className="grid h-12 w-12 place-items-center rounded-full border border-[#FF6874]/50 bg-[#FF6874]/15 text-[#FF8A94]">
-                  <Siren size={23} className="alarm-flash" />
+              <div className="mt-2.5 flex items-start gap-2">
+                <span className="grid h-9 w-9 flex-none place-items-center border border-[#D94A35] text-[#D94A35]">
+                  <Siren size={19} className="alarm-flash" />
                 </span>
+                <div className="min-w-0">
+                  <p className="text-[13px] font-extrabold leading-[1.05] tracking-[-0.02em]">Alarme disparado</p>
+                  <p className="mt-1 text-[8.5px] leading-snug text-[#5A665F]">
+                    Possível interferência na instalação elétrica
+                  </p>
+                </div>
               </div>
 
-              <p className="mt-2 text-[12px] font-bold leading-tight text-white">Alarme disparado</p>
-              <p className="mt-0.5 text-[9.5px] leading-snug text-white/60">
-                Possível interferência na instalação elétrica
-              </p>
-
-              <div className="mt-1.5 flex items-center justify-center gap-1.5 font-mono text-[8px] text-[#B9F4E3]/80">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#57D9B2] shadow-[0_0_8px_#57D9B2]" />
+              <div className="mt-2 flex items-center gap-1.5 font-mono text-[7.5px] uppercase tracking-[0.04em] text-[#2F6B52]">
+                <span className="h-1.5 w-1.5 bg-[#2F6B52]" />
                 Alarme no celular ligado
               </div>
 
-              <div className="mt-2 flex items-center justify-center gap-1 font-mono text-[8px] text-white/50">
-                <MapPin size={9} className="flex-none text-[#35D6EF]" />
-                {ADDRESS_SHORT} · {DEMO_TIME}
+              <div className="mt-1.5 flex items-center gap-1.5 font-mono text-[7.5px] text-[#5A665F]">
+                <MapPin size={8} className="flex-none" />
+                {ADDRESS_SHORT} / {DEMO_TIME}
               </div>
 
-              <div className="mt-2 flex items-center justify-center gap-1.5 rounded-lg border border-white/10 bg-white/5 py-1.5 text-[9px] font-semibold text-white/75">
-                <VolumeX size={11} /> Silenciar no app
+              <div className="mt-2 flex items-center justify-center gap-1.5 border border-[#101617] bg-[#101617] py-1.5 font-mono text-[8px] uppercase tracking-[0.06em] text-[#EFEFE6]">
+                <VolumeX size={10} /> Silenciar no app
               </div>
 
-              <div className="mt-1.5 font-mono text-[7px] uppercase tracking-[0.2em] text-[#F4C95D]/60">
-                simulação · planejado
+              <div className="mt-1.5 font-mono text-[6.5px] uppercase tracking-[0.1em] text-[#D94A35]">
+                Simulação / planejado
               </div>
             </div>
           ) : (
             <>
-              <div className="mt-2 rounded-xl border border-[#F4C95D]/35 bg-[#F4C95D]/8 p-2.5 shadow-[0_10px_28px_-14px_rgba(0,0,0,0.9)]">
+              <div className="mt-1.5 border-l-4 border-[#F2C230] bg-paper p-2.5 text-ink">
                 <div className="flex items-center gap-2">
-                  <span className="grid h-7 w-7 flex-none place-items-center rounded-lg bg-linear-to-br from-[#35D6EF] to-[#57D9B2] text-[#06131F]">
+                  <span className="grid h-7 w-7 flex-none place-items-center bg-[#F2C230] text-ink">
                     <ShieldAlert size={14} strokeWidth={2.4} />
                   </span>
                   <span className="min-w-0 flex-1">
                     <span className="flex items-baseline justify-between gap-2">
-                      <span className="truncate text-[10px] font-semibold text-white/90">Guardião Elétrico</span>
-                      <span className="font-mono text-[8px] text-white/40">agora</span>
+                      <span className="truncate text-[10px] font-bold">Guardião Elétrico</span>
+                      <span className="font-mono text-[7px] text-[#5A665F]">agora</span>
                     </span>
-                    <span className="block truncate font-mono text-[8px] uppercase tracking-[0.14em] text-[#F4C95D]/80">
+                    <span className="block font-mono text-[7px] uppercase tracking-[0.05em] text-[#7A5A14]">
                       Alerta planejado
                     </span>
                   </span>
                 </div>
 
-                <p className="mt-2 flex items-start gap-1.5 text-[11px] font-semibold leading-snug text-[#F5F8FD]">
-                  <Bell size={12} className="mt-0.5 flex-none text-[#F4C95D]" />
+                <p className="mt-2 flex items-start gap-1.5 text-[10.5px] font-bold leading-snug">
+                  <Bell size={11} className="mt-0.5 flex-none" />
                   Possível interferência detectada
                 </p>
-                <p className="mt-1 pl-[18px] text-[9.5px] leading-snug text-white/55">
-                  Obstrução da câmera · vibração na instalação
+                <p className="mt-0.5 pl-[16px] text-[8.5px] leading-snug text-[#5A665F]">
+                  Obstrução da câmera / vibração na instalação
                 </p>
-                <div className="mt-2 flex items-center gap-1.5 border-t border-white/8 pt-2 font-mono text-[8px] text-white/50">
-                  <MapPin size={9} className="flex-none text-[#35D6EF]" />
-                  <span className="truncate">{ADDRESS_SHORT} · localização cadastrada</span>
+                <div className="mt-2 flex items-center gap-1.5 border-t border-ink/15 pt-1.5 font-mono text-[7.5px] text-[#5A665F]">
+                  <MapPin size={8} className="flex-none" />
+                  <span className="truncate">{ADDRESS_SHORT} / localização cadastrada</span>
                 </div>
               </div>
 
-              <div className="mt-2 text-center font-mono text-[7px] uppercase tracking-[0.24em] text-[#F4C95D]/55">
-                Simulação · não envia avisos reais
+              <div className="mt-1.5 text-center font-mono text-[6.5px] uppercase tracking-[0.12em] text-paper/40">
+                Simulação / não envia avisos reais
               </div>
             </>
           )}

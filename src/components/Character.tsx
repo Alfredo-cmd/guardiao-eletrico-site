@@ -6,8 +6,8 @@ interface CharacterProps {
 
 const skin = '#e6b58d'
 const skinShade = '#cf9a72'
-const jacket = '#f4c95d'
-const jacketShade = '#d9ab42'
+const jacket = '#f2c230'
+const jacketShade = '#d6a81f'
 const pants = '#2b3c56'
 const pantsShade = '#22314a'
 const hair = '#242c3a'
@@ -50,12 +50,12 @@ export function Character({ pose = 'idle', walking = false, opacity = 1 }: Chara
             fill={jacket}
           />
           <path d="M-19 -113 Q-23 -99 -20 -78 L-18 -50 Q-8 -46 0 -45 L0 -119 Q-10 -118 -19 -113 Z" fill={jacketShade} opacity="0.55" />
-          <path d="M0 -118 L0 -45" stroke="#b98f30" strokeWidth="1.4" opacity="0.6" />
-          <path d="M-14 -66 L-4 -66 L-4 -58 L-14 -58 Z" fill="#c69a35" opacity="0.55" />
-          <path d="M-13 -96 Q0 -88 13 -96" fill="none" stroke="#c69a35" strokeWidth="2" strokeLinecap="round" opacity="0.7" />
+          <path d="M0 -118 L0 -45" stroke="#8a6a12" strokeWidth="1.4" opacity="0.6" />
+          <path d="M-14 -66 L-4 -66 L-4 -58 L-14 -58 Z" fill="#a17a12" opacity="0.55" />
+          <path d="M-13 -96 Q0 -88 13 -96" fill="none" stroke="#a17a12" strokeWidth="2" strokeLinecap="round" opacity="0.7" />
 
           {/* collar */}
-          <path d="M-14 -112 Q0 -104 14 -112 L12 -118 Q0 -111 -12 -118 Z" fill="#f8dc93" />
+          <path d="M-14 -112 Q0 -104 14 -112 L12 -118 Q0 -111 -12 -118 Z" fill="#f8e2a1" />
 
           {/* front arm (reaches to the wall when needed) */}
           <g
@@ -84,7 +84,7 @@ export function Character({ pose = 'idle', walking = false, opacity = 1 }: Chara
             <path d="M-16 -138 Q-16 -156 0 -156 Q16 -156 16 -138 Q10 -148 0 -148 Q-10 -148 -16 -138 Z" fill={hair} />
             <path d="M-16.5 -138 Q-17 -150 -10 -154 L-8 -148 Q-13 -144 -13 -137 Z" fill={hair} />
             <path d="M-16 -145 Q-14 -158 0 -158 Q14 -158 16 -145 Q15 -149 8 -150 Q0 -152 -8 -150 Q-15 -149 -16 -145 Z" fill="#2f3f56" />
-            <path d="M-16 -145 Q-12 -153 0 -153 Q12 -153 16 -145 L16 -141 Q0 -148 -16 -141 Z" fill="#35d6ef" opacity="0.9" />
+            <path d="M-16 -145 Q-12 -153 0 -153 Q12 -153 16 -145 L16 -141 Q0 -148 -16 -141 Z" fill="#f2c230" opacity="0.9" />
             <circle cx="6" cy="-138" r="1.6" fill="#2b3242" />
             <path d="M9 -132 Q12 -131 13 -133" fill="none" stroke="#b9855f" strokeWidth="1.3" strokeLinecap="round" />
           </g>

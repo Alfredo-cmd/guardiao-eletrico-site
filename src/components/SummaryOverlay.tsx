@@ -8,6 +8,18 @@ interface SummaryOverlayProps {
   onHow: () => void
 }
 
+const cameraPoints = [
+  'Grava a fachada, sem interpretar a cena.',
+  'A visão obstruída não gera aviso automático.',
+  'A ocorrência é percebida apenas depois.',
+]
+
+const guardianPoints = [
+  'Câmera e sensor de vibração avaliados em conjunto.',
+  'Mão + vibração acionam o buzzer local.',
+  'Alarme e aviso no celular, obstrução e adulteração seguem em desenvolvimento.',
+]
+
 export function SummaryOverlay({ onRestart, onHome, onHow }: SummaryOverlayProps) {
   const panelRef = useRef<HTMLDivElement>(null)
   const primaryRef = useRef<HTMLButtonElement>(null)
@@ -40,7 +52,7 @@ export function SummaryOverlay({ onRestart, onHome, onHow }: SummaryOverlayProps
 
   return (
     <motion.div
-      className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-[#050B14]/78 p-4 backdrop-blur-md sm:p-6"
+      className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-[#0B1213]/96 p-4 sm:p-6"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -50,100 +62,92 @@ export function SummaryOverlay({ onRestart, onHome, onHow }: SummaryOverlayProps
     >
       <motion.div
         ref={panelRef}
-        className="panel relative my-auto w-full max-w-[880px] overflow-hidden p-5 sm:p-8"
-        initial={{ opacity: 0, y: 18, scale: 0.98 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        exit={{ opacity: 0, y: 12, scale: 0.985 }}
-        transition={{ type: 'spring', stiffness: 190, damping: 24 }}
+        className="relative my-auto w-full max-w-[960px] border-[3px] border-ink bg-paper p-5 text-ink shadow-[14px_14px_0_#F2C230] sm:p-8"
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: 10 }}
+        transition={{ duration: 0.25, ease: 'easeOut' }}
       >
-        <div className="pointer-events-none absolute -right-24 -top-32 h-72 w-72 rounded-full bg-[#35D6EF]/12 blur-3xl" />
-        <div className="pointer-events-none absolute -bottom-28 -left-20 h-72 w-72 rounded-full bg-[#F4C95D]/10 blur-3xl" />
+        <div className="flex flex-wrap items-center justify-between gap-3 border-b-2 border-ink pb-3">
+          <span className="folio">
+            <strong>Laudo 001</strong> / encerramento da demonstração
+          </span>
+          <span className="stamp stamp--alert">Simulação</span>
+        </div>
 
-        <div className="relative">
-          <div className="flex flex-wrap items-center gap-2">
-            <span className="eyebrow">Resumo da demonstração</span>
-            <span className="chip chip-live chip-dot">Simulação</span>
-          </div>
+        <h2
+          id="summary-title"
+          className="display mt-5 max-w-[760px] text-[clamp(2.2rem,4.5vw,3.8rem)] leading-[0.94]"
+        >
+          Não basta registrar uma ameaça.
+          <br />
+          É preciso identificá-la e reagir.
+        </h2>
 
-          <h2
-            id="summary-title"
-            className="mt-3 max-w-[700px] font-display text-[clamp(1.6rem,3.4vw,2.55rem)] font-semibold leading-[1.05] tracking-[-0.02em] text-paper"
-          >
-            Não basta registrar uma ameaça.
-            <span className="gradient-text"> É preciso identificá-la e reagir.</span>
-          </h2>
-
-          <div className="mt-6 grid gap-3 md:grid-cols-2">
-            <div className="rounded-2xl border border-[#F4C95D]/25 bg-[#F4C95D]/5 p-4">
-              <div className="flex items-center gap-2">
-                <span className="grid h-9 w-9 place-items-center rounded-[10px] border border-[#F4C95D]/35 bg-[#F4C95D]/10 text-[#F4C95D]">
-                  <Camera size={17} />
-                </span>
-                <div>
-                  <div className="eyebrow text-[#F4C95D]/80">Câmera básica</div>
-                  <div className="font-display text-[15px] font-semibold text-paper">Registro sem alerta</div>
-                </div>
+        <div className="mt-7 grid gap-x-8 gap-y-6 md:grid-cols-2">
+          <div className="border-t-2 border-ink pt-3">
+            <div className="flex items-center gap-2">
+              <span className="grid h-8 w-8 place-items-center bg-[#F2C230] text-ink">
+                <Camera size={16} />
+              </span>
+              <div>
+                <div className="font-mono text-[9px] uppercase tracking-[0.05em] text-muted">Câmera básica</div>
+                <div className="text-[14px] font-bold leading-tight">Registro sem alerta</div>
               </div>
-              <ul className="mt-3 space-y-1.5 text-[12px] leading-snug text-muted">
-                {[
-                  'Grava a fachada, sem interpretar a cena.',
-                  'A visão obstruída não gera aviso automático.',
-                  'A ocorrência é percebida apenas depois.',
-                ].map((item) => (
-                  <li key={item} className="flex gap-1.5">
-                    <X size={13} className="mt-0.5 flex-none text-[#F4C95D]/70" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
             </div>
+            <ul className="mt-3">
+              {cameraPoints.map((item) => (
+                <li key={item} className="flex gap-2 border-b border-ink/15 py-2 text-[12px] leading-snug text-[#3F4A44]">
+                  <X size={13} className="mt-0.5 flex-none text-signal" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
 
-            <div className="rounded-2xl border border-[#57D9B2]/28 bg-[#57D9B2]/5 p-4">
-              <div className="flex items-center gap-2">
-                <span className="grid h-9 w-9 place-items-center rounded-[10px] border border-[#57D9B2]/35 bg-[#57D9B2]/10 text-[#57D9B2]">
-                  <ShieldCheck size={17} />
-                </span>
-                <div>
-                  <div className="eyebrow text-[#57D9B2]/80">Guardião Elétrico</div>
-                  <div className="font-display text-[15px] font-semibold text-paper">Detecção combinada</div>
-                </div>
+          <div className="border-t-2 border-ink pt-3">
+            <div className="flex items-center gap-2">
+              <span className="grid h-8 w-8 place-items-center bg-[#2F6B52] text-white">
+                <ShieldCheck size={16} />
+              </span>
+              <div>
+                <div className="font-mono text-[9px] uppercase tracking-[0.05em] text-muted">Guardião Elétrico</div>
+                <div className="text-[14px] font-bold leading-tight">Detecção combinada</div>
               </div>
-              <ul className="mt-3 space-y-1.5 text-[12px] leading-snug text-muted">
-                {[
-                  'Câmera e sensor de vibração avaliados em conjunto.',
-                  'Mão + vibração acionam o buzzer local.',
-                  'Alarme e aviso no celular, obstrução e adulteração seguem em desenvolvimento.',
-                ].map((item) => (
-                  <li key={item} className="flex gap-1.5">
-                    <Check size={13} className="mt-0.5 flex-none text-[#57D9B2]" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
             </div>
+            <ul className="mt-3">
+              {guardianPoints.map((item) => (
+                <li key={item} className="flex gap-2 border-b border-ink/15 py-2 text-[12px] leading-snug text-[#3F4A44]">
+                  <Check size={13} className="mt-0.5 flex-none text-safe" />
+                  {item}
+                </li>
+              ))}
+            </ul>
           </div>
+        </div>
 
-          <div className="mt-4 flex items-start gap-2.5 rounded-xl border border-[#F4C95D]/25 bg-[#F4C95D]/6 px-3.5 py-2.5 text-[11px] leading-snug text-[#FFE9B1]/85">
-            <Info size={14} className="mt-0.5 flex-none text-[#F4C95D]" />
-            <p>
-              <strong className="font-semibold">Protótipo atual:</strong> detecção de mão, sensor de vibração, regra
-              combinada e buzzer local. <strong className="font-semibold">Planejado:</strong> obstrução, adulteração
-              física, alarme e aviso no celular. A comparação é com uma câmera básica sem alertas inteligentes, não com
-              todas as câmeras.
-            </p>
-          </div>
+        <div className="mt-6 border-l-4 border-safety bg-[#F2C230]/10 px-3 py-2.5 text-[11px] leading-relaxed text-[#3F4A44]">
+          <p className="flex gap-2">
+            <Info size={13} className="mt-0.5 flex-none text-ink" />
+            <span>
+              <strong className="font-bold text-ink">Protótipo atual:</strong> detecção de mão, sensor de vibração,
+              regra combinada e buzzer local. <strong className="font-bold text-ink">Planejado:</strong> obstrução,
+              adulteração física, alarme e aviso no celular. A comparação é com uma câmera básica sem alertas
+              inteligentes, não com todas as câmeras.
+            </span>
+          </p>
+        </div>
 
-          <div className="mt-6 flex flex-col gap-2 sm:flex-row sm:items-center">
-            <button type="button" ref={primaryRef} className="btn btn-primary" onClick={onRestart}>
-              <RotateCcw size={16} /> Repetir demonstração
-            </button>
-            <button type="button" className="btn btn-ghost" onClick={onHow}>
-              <Lightbulb size={16} /> Como o Guardião pensa
-            </button>
-            <button type="button" className="btn btn-quiet sm:ml-auto" onClick={onHome}>
-              Voltar ao início
-            </button>
-          </div>
+        <div className="mt-6 flex flex-col gap-2 border-t-2 border-ink pt-4 sm:flex-row sm:items-center">
+          <button type="button" ref={primaryRef} className="btn btn-primary" onClick={onRestart}>
+            <RotateCcw size={15} /> Repetir demonstração
+          </button>
+          <button type="button" className="btn btn-ghost" onClick={onHow}>
+            <Lightbulb size={15} /> Como o Guardião pensa
+          </button>
+          <button type="button" className="btn btn-quiet sm:ml-auto" onClick={onHome}>
+            Voltar ao início
+          </button>
         </div>
       </motion.div>
     </motion.div>

@@ -185,7 +185,7 @@ export const steps: SimStep[] = [
     pose: 'reach',
     signals: s({ recording: true, hand: true, vibration: true, alarm: true, phoneAlarm: true }),
     highlight: 'buzzer',
-    statusLine: 'Alarme local ativo · alarme no celular planejado',
+    statusLine: 'Alarme local ativo / alarme no celular planejado',
   },
   {
     id: 'plannedTamperDemo',
@@ -203,7 +203,7 @@ export const steps: SimStep[] = [
     signals: s({ recording: true, obstructed: true, tamper: true, alarm: true, phoneAlarm: true }),
     highlight: 'camera',
     planned: true,
-    statusLine: 'Alarme como consequência · obstrução/adulteração planejadas',
+    statusLine: 'Alarme como consequência / obstrução/adulteração planejadas',
   },
   {
     id: 'plannedPhoneAlert',
@@ -220,7 +220,7 @@ export const steps: SimStep[] = [
     signals: s({ recording: true, obstructed: true, tamper: true, alarm: true, phone: true }),
     highlight: 'phone',
     planned: true,
-    statusLine: 'Notificação fictícia · alarme local ativo',
+    statusLine: 'Notificação fictícia / alarme local ativo',
   },
   {
     id: 'summary',
