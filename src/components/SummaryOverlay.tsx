@@ -139,7 +139,7 @@ export function SummaryOverlay({ onRestart, onHome, onHow, onPricing }: SummaryO
           </p>
         </div>
 
-        <div className="mt-6 flex flex-col gap-2 border-t-2 border-ink pt-4 sm:flex-row sm:items-center">
+        <div className="mt-6 flex flex-col gap-2 border-t-2 border-ink pt-4 sm:flex-row sm:flex-wrap sm:items-center">
           <button type="button" ref={primaryRef} className="btn btn-primary" onClick={onRestart}>
             <RotateCcw size={15} /> Repetir demonstração
           </button>
