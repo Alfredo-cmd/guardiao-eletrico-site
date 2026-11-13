@@ -77,7 +77,7 @@ export function HomeScreen({ onCompare, onExplore, onHow, onPricing }: HomeScree
             </div>
 
             <button type="button" className="btn btn-quiet mt-3 text-[12.5px]" onClick={onHow}>
-              Entenda a lógica da demonstração
+              Como funciona?
             </button>
 
             <div className="mt-9 border-t-2 border-ink">

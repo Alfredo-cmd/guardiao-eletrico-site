@@ -45,6 +45,8 @@ A ficha **004 / proposta comercial** apresenta três configurações:
 
 Os valores são **ilustrativos para o pitch** e podem ser alterados em `src/data/plans.ts`. O fluxo de compra é uma simulação: escolhe plano, quantidade e forma de pagamento fictícia, mas **não coleta dados, não processa pagamento e não cria pedido**. A confirmação mostra apenas um código de demonstração.
 
+![Planos e simulação de compra](docs/planos.png)
+
 ## Skills do agente
 
 O projeto inclui a skill **`frontend-design`** em `.opencode/skills/frontend-design/`, copiada de [anthropics/skills](https://github.com/anthropics/skills/tree/main/skills/frontend-design) e licenciada sob Apache 2.0 (termos em `LICENSE.txt`).

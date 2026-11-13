@@ -20,6 +20,8 @@ const payments: { id: PaymentMethod; label: string; icon: typeof QrCode }[] = [
 
 export function PurchaseOverlay({ plan, quantity, onClose, onHome }: PurchaseOverlayProps) {
   const panelRef = useRef<HTMLDivElement>(null)
+  const returnFocusRef = useRef<HTMLElement | null>(null)
+  const confirmedRef = useRef<HTMLButtonElement>(null)
   const [payment, setPayment] = useState<PaymentMethod>('pix')
   const [accepted, setAccepted] = useState(false)
   const [confirmed, setConfirmed] = useState(false)
@@ -32,7 +34,19 @@ export function PurchaseOverlay({ plan, quantity, onClose, onHome }: PurchaseOve
   const setupTotal = plan.setup * quantity
   const monthlyTotal = plan.monthly * quantity
 
+  const movePayment = (direction: 1 | -1) => {
+    const index = payments.findIndex((item) => item.id === payment)
+    const next = payments[(index + direction + payments.length) % payments.length]
+    setPayment(next.id)
+    document.getElementById(`pay-${next.id}`)?.focus()
+  }
+
   useEffect(() => {
+    if (confirmed) confirmedRef.current?.focus()
+  }, [confirmed])
+
+  useEffect(() => {
+    returnFocusRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null
     panelRef.current?.focus()
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
@@ -55,7 +69,10 @@ export function PurchaseOverlay({ plan, quantity, onClose, onHome }: PurchaseOve
       }
     }
     window.addEventListener('keydown', onKeyDown)
-    return () => window.removeEventListener('keydown', onKeyDown)
+    return () => {
+      window.removeEventListener('keydown', onKeyDown)
+      returnFocusRef.current?.focus()
+    }
   }, [onClose])
 
   return (
@@ -139,7 +156,7 @@ export function PurchaseOverlay({ plan, quantity, onClose, onHome }: PurchaseOve
             </p>
 
             <div className="mt-5 flex flex-col gap-2 border-t-2 border-ink pt-4 sm:flex-row">
-              <button type="button" className="btn btn-primary" onClick={onClose}>
+              <button type="button" ref={confirmedRef} className="btn btn-primary" onClick={onClose}>
                 Voltar aos planos
               </button>
               <button type="button" className="btn btn-ghost" onClick={onHome}>
@@ -180,10 +197,21 @@ export function PurchaseOverlay({ plan, quantity, onClose, onHome }: PurchaseOve
                   return (
                     <button
                       key={id}
+                      id={`pay-${id}`}
                       type="button"
                       role="radio"
                       aria-checked={selected}
+                      tabIndex={selected ? 0 : -1}
                       onClick={() => setPayment(id)}
+                      onKeyDown={(event) => {
+                        if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
+                          event.preventDefault()
+                          movePayment(1)
+                        } else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
+                          event.preventDefault()
+                          movePayment(-1)
+                        }
+                      }}
                       className={`flex items-center justify-center gap-1.5 px-2 py-2.5 text-[11.5px] font-semibold transition-colors ${
                         index < payments.length - 1 ? 'border-r border-ink' : ''
                       } ${selected ? 'bg-safety text-ink' : 'bg-transparent text-muted hover:bg-ink hover:text-paper'}`}
