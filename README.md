@@ -28,6 +28,12 @@ A ilustração é 2.5D/isométrica, feita em SVG, e toda a interação roda no n
 - SVG autoral para a casa, o personagem e os efeitos
 - Fontes locais (Outfit Variable e Inter Variable via `@fontsource`)
 
+## Skills do agente
+
+O projeto inclui a skill **`frontend-design`** em `.opencode/skills/frontend-design/`, copiada de [anthropics/skills](https://github.com/anthropics/skills/tree/main/skills/frontend-design) e licenciada sob Apache 2.0 (termos em `LICENSE.txt`).
+
+O OpenCode descobre skills de projeto automaticamente em `.opencode/skills`. Para acioná-la, peça para usar a skill `frontend-design` ou mencione `@frontend-design`. Ela é uma ferramenta de desenvolvimento e não faz parte do bundle publicado em `docs/`.
+
 ## Rodar o projeto
 
 Requisitos: Node.js 20 ou superior.

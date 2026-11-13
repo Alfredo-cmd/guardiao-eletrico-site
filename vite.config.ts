@@ -9,6 +9,13 @@ import { viteSingleFile } from 'vite-plugin-singlefile'
 export default defineConfig({
   base: './',
   plugins: [react(), tailwindcss(), viteSingleFile()],
+  server: {
+    watch: {
+      // Skills, generated docs and the build output are not part of the app
+      // bundle. Ignoring them also avoids Windows file-lock watcher errors.
+      ignored: ['**/.opencode/**', '**/docs/**', '**/dist/**'],
+    },
+  },
   build: {
     target: 'es2020',
     cssCodeSplit: false,

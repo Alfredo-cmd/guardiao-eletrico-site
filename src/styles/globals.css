@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+/* Development-only files are not part of the app bundle. */
+@source not "../../.opencode";
+@source not "../../docs";
+@source not "../../dist";
+
 @theme {
   --color-night: #0b1425;
   --color-night-deep: #070e1a;
