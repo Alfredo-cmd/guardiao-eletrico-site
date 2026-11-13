@@ -21,6 +21,29 @@ interface PricingScreenProps {
   onHome: () => void
 }
 
+const FAQ_ITEMS = [
+  {
+    q: 'Os valores são reais?',
+    a: 'Não. São valores ilustrativos para o pitch PIINC. A compra é uma simulação: nenhum pagamento é processado e nenhum pedido é criado.',
+  },
+  {
+    q: 'O que já faz parte do protótipo?',
+    a: 'A configuração Essencial representa o estágio atual: câmera, sensor de vibração, regra mão + vibração e buzzer local.',
+  },
+  {
+    q: 'O que está marcado como planejado?',
+    a: 'Alarme no celular, notificação com endereço cadastrado, detecção de obstrução e adulteração física. Esses recursos ainda não estão implementados.',
+  },
+  {
+    q: 'A compra inclui instalação?',
+    a: 'Não. Instalação, frete e impostos não estão incluídos nos valores ilustrativos. A simulação não agenda nenhum serviço.',
+  },
+  {
+    q: 'Consigo testar antes de escolher?',
+    a: 'Sim. Use a comparação guiada (~1 min) ou o modo Explorar. A demonstração inteira funciona no navegador e também offline.',
+  },
+]
+
 function FeatureLine({ state, label }: { state: FeatureState; label: string }) {
   if (state === 'yes') {
     return (
@@ -48,7 +71,7 @@ function FeatureLine({ state, label }: { state: FeatureState; label: string }) {
   }
 
   return (
-    <li className="flex items-start gap-2 border-b border-ink/10 py-1.5 text-[10.5px] leading-snug text-muted/55">
+    <li className="flex items-start gap-2 border-b border-ink/10 py-1.5 text-[10.5px] leading-snug text-muted">
       <span className="mt-0.5 grid h-4 w-4 flex-none place-items-center border border-ink/10">
         <Minus size={9} />
       </span>
@@ -82,7 +105,7 @@ export function PricingScreen({ onBack, onCompare, onHow, onHome }: PricingScree
         </div>
       </header>
 
-      <main className="page flex-1">
+      <main id="conteudo" tabIndex={-1} className="page flex-1">
         <div className="flex flex-wrap items-end justify-between gap-4 border-b-2 border-ink pb-5">
           <div>
             <span className="folio">
@@ -247,9 +270,34 @@ export function PricingScreen({ onBack, onCompare, onHow, onHome }: PricingScree
               <ShieldCheck size={15} /> Simular compra
             </button>
 
-            <p className="mt-2.5 text-[9px] leading-relaxed text-paper/45">{PURCHASE_DISCLAIMER}</p>
+            <p className="mt-2.5 text-[9px] leading-relaxed text-paper/65">{PURCHASE_DISCLAIMER}</p>
           </aside>
         </div>
+
+        <section className="mt-10 border-t-2 border-ink pt-5">
+          <div className="flex flex-wrap items-end justify-between gap-3">
+            <div>
+              <span className="folio">
+                <strong>Dúvidas</strong> / ficha 004
+              </span>
+              <h2 className="mt-2 text-[24px] font-bold">Perguntas frequentes</h2>
+            </div>
+            <span className="stamp stamp--planned">Valores ilustrativos</span>
+          </div>
+          <div className="mt-4 grid gap-x-10 md:grid-cols-2">
+            {FAQ_ITEMS.map(({ q, a }) => (
+              <details key={q} className="group border-b border-ink/20 py-3">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-3 text-[13px] font-semibold marker:hidden [&::-webkit-details-marker]:hidden">
+                  {q}
+                  <span className="grid h-6 w-6 flex-none place-items-center border border-ink/25 text-ink transition-transform group-open:rotate-45">
+                    <Plus size={13} />
+                  </span>
+                </summary>
+                <p className="mt-2 max-w-[62ch] text-[11.5px] leading-relaxed text-muted">{a}</p>
+              </details>
+            ))}
+          </div>
+        </section>
       </main>
 
       <footer className="border-t border-ink/20">
@@ -262,7 +310,7 @@ export function PricingScreen({ onBack, onCompare, onHow, onHome }: PricingScree
       <div className="fixed inset-x-0 bottom-0 z-40 border-t-4 border-safety bg-ink px-4 py-3 lg:hidden">
         <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-3">
           <div>
-            <div className="font-mono text-[8px] uppercase tracking-[0.05em] text-paper/45">
+            <div className="font-mono text-[8px] uppercase tracking-[0.05em] text-paper/65">
               {selectedPlan.name} / {quantity} kit{quantity > 1 ? 's' : ''}
             </div>
             <div className="font-display text-[24px] leading-none text-safety">{formatBRL(setupTotal)}</div>

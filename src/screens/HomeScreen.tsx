@@ -40,7 +40,7 @@ export function HomeScreen({ onCompare, onExplore, onHow, onPricing }: HomeScree
         </div>
       </header>
 
-      <main className="page page-wide flex-1">
+      <main id="conteudo" tabIndex={-1} className="page page-wide flex-1">
         <div className="home-grid">
           <section className="min-w-0">
             <div className="flex flex-wrap items-center justify-between gap-3 border-b border-ink/25 pb-2">

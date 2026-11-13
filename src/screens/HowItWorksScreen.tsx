@@ -9,6 +9,7 @@ import {
   Play,
   ShieldAlert,
   ShieldCheck,
+  ShoppingBag,
   Siren,
   Smartphone,
   Waves,
@@ -19,6 +20,7 @@ import { ExplainerFlow } from '../components/ExplainerFlow'
 interface HowItWorksScreenProps {
   onBack: () => void
   onCompare: () => void
+  onPricing: () => void
 }
 
 const implemented = [
@@ -36,7 +38,7 @@ const planned = [
   { icon: Camera, text: 'Infraestrutura de comunicação remota' },
 ]
 
-export function HowItWorksScreen({ onBack, onCompare }: HowItWorksScreenProps) {
+export function HowItWorksScreen({ onBack, onCompare, onPricing }: HowItWorksScreenProps) {
   return (
     <div className="app-shell bg-paper text-ink">
       <header className="topbar">
@@ -48,7 +50,7 @@ export function HowItWorksScreen({ onBack, onCompare }: HowItWorksScreenProps) {
         </div>
       </header>
 
-      <main className="page flex-1">
+      <main id="conteudo" tabIndex={-1} className="page flex-1">
         <div className="flex flex-wrap items-end justify-between gap-4 border-b-2 border-ink pb-5">
           <div>
             <span className="folio">
@@ -138,6 +140,9 @@ export function HowItWorksScreen({ onBack, onCompare }: HowItWorksScreenProps) {
           <div className="flex flex-col gap-2 sm:ml-auto sm:flex-row">
             <button type="button" className="btn btn-primary btn-sm" onClick={onCompare}>
               <Play size={14} fill="currentColor" /> Comparação completa
+            </button>
+            <button type="button" className="btn btn-ghost btn-sm" onClick={onPricing}>
+              <ShoppingBag size={14} /> Planos e preços
             </button>
             <button type="button" className="btn btn-ghost btn-sm" onClick={onBack}>
               Voltar ao início

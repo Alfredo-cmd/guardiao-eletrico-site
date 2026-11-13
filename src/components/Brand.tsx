@@ -30,7 +30,7 @@ export function Brand({ compact = false, onClick }: BrandProps) {
         type="button"
         onClick={onClick}
         className="flex items-center gap-2.5 text-left transition-opacity hover:opacity-80"
-        aria-label="Voltar ao início"
+        title="Voltar ao início"
       >
         {content}
       </button>

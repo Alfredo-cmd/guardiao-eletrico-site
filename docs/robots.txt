@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://alfredo-cmd.github.io/guardiao-eletrico-site/sitemap.xml

@@ -45,7 +45,7 @@ function RulePill({ active, label, tone = 'normal' }: { active: boolean; label: 
   return (
     <span
       className={`border px-1.5 py-0.5 font-mono text-[9px] tracking-[0.04em] ${
-        active ? activeClass : 'border-paper/20 text-paper/35'
+        active ? activeClass : 'border-paper/25 text-paper/55'
       }`}
     >
       {label}
@@ -91,7 +91,7 @@ function RuleCard({ signals, cameraMode, planned }: { signals: Signals; cameraMo
         <RulePill active={signals.hand} label="MÃO" />
         <span className="font-mono text-[9px] text-safety">E</span>
         <RulePill active={signals.vibration} label="VIBRAÇÃO" />
-        <ArrowRight size={11} className="text-paper/30" />
+        <ArrowRight size={11} className="text-paper/50" />
         <RulePill active={signals.alarm} label="BUZZER" tone="alert" />
       </div>
       <div className="mt-2 flex items-center justify-between border-t border-paper/15 pt-2">
@@ -238,7 +238,7 @@ export function SimulatorScreen({ mode, onExit, onHow, onPricing }: SimulatorScr
               className="btn btn-quiet btn-sm"
               onClick={toggleSound}
               aria-pressed={soundOn}
-              aria-label={soundOn ? 'Desativar som' : 'Ativar som'}
+              aria-label={soundOn ? 'Som ligado. Desativar som' : 'Som desligado. Ativar som'}
               title={soundOn ? 'Desativar som (M)' : 'Ativar som (M)'}
             >
               {soundOn ? <Volume2 size={16} className="text-safety" /> : <VolumeX size={16} />}
@@ -266,7 +266,7 @@ export function SimulatorScreen({ mode, onExit, onHow, onPricing }: SimulatorScr
         </div>
       </header>
 
-      <main className="mx-auto grid w-full max-w-[1720px] flex-1 min-h-0 grid-cols-1 gap-3 px-4 pb-3 pt-3 sm:px-6 lg:grid-cols-[minmax(0,1fr)_370px]">
+      <main id="conteudo" tabIndex={-1} className="mx-auto grid w-full max-w-[1720px] flex-1 min-h-0 grid-cols-1 gap-3 px-4 pb-3 pt-3 sm:px-6 lg:grid-cols-[minmax(0,1fr)_370px]">
         <section className="flex min-h-0 flex-col gap-2.5" aria-label="Demonstração animada">
           <div className="border-b border-ink/25 pb-2">
             <ComparisonSelector
@@ -538,7 +538,7 @@ export function SimulatorScreen({ mode, onExit, onHow, onPricing }: SimulatorScr
               <>
                 <div className="mb-1 flex items-center justify-between">
                   <span className="eyebrow">Sinais monitorados</span>
-                  <span className="font-mono text-[8px] uppercase tracking-[0.04em] text-paper/45">
+                  <span className="font-mono text-[8px] uppercase tracking-[0.04em] text-paper/65">
                     {sensorMode === 'camera' ? 'câmera' : 'câmera + sensor'}
                   </span>
                 </div>
@@ -553,7 +553,7 @@ export function SimulatorScreen({ mode, onExit, onHow, onPricing }: SimulatorScr
                 <div className="mt-4 hidden border-t border-paper/15 pt-3 lg:block">
                   <div className="flex items-center justify-between">
                     <span className="eyebrow">Sequência</span>
-                    <span className="font-mono text-[8px] tracking-[0.04em] text-paper/40">
+                    <span className="font-mono text-[8px] tracking-[0.04em] text-paper/65">
                       {String(sim.index + 1).padStart(2, '0')} / 12
                     </span>
                   </div>
@@ -567,7 +567,7 @@ export function SimulatorScreen({ mode, onExit, onHow, onPricing }: SimulatorScr
                           key={item.id}
                           className={`flex items-center gap-2 py-1 ${
                             startsPhase ? 'mt-1 border-t border-paper/10 pt-1.5' : ''
-                          } ${isCurrent ? 'text-paper' : isPast ? 'text-paper/45' : 'text-paper/30'}`}
+                          } ${isCurrent ? 'text-paper' : isPast ? 'text-paper/65' : 'text-paper/55'}`}
                         >
                           <span className={`w-5 flex-none font-mono text-[8px] ${isCurrent ? 'text-safety' : ''}`}>
                             {String(i + 1).padStart(2, '0')}
@@ -600,7 +600,7 @@ export function SimulatorScreen({ mode, onExit, onHow, onPricing }: SimulatorScr
           </div>
 
           <div className="border-t border-paper/15 px-4 py-2.5">
-            <div className="flex items-center justify-between gap-2 font-mono text-[8.5px] leading-tight text-paper/45">
+            <div className="flex items-center justify-between gap-2 font-mono text-[8.5px] leading-tight text-paper/65">
               <span className="flex items-center gap-1.5">
                 <span className="h-1.5 w-1.5 bg-[#6CC49B]" /> Protótipo
               </span>

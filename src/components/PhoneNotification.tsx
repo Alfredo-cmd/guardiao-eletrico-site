@@ -26,7 +26,7 @@ export function PhoneNotification({ variant = 'notification' }: PhoneNotificatio
       <div className="phone-screen">
         <div className="phone-notch" />
         <div className="px-2.5 pb-2.5 pt-1.5">
-          <div className="flex items-center justify-between font-mono text-[8.5px] text-paper/50">
+          <div className="flex items-center justify-between font-mono text-[8.5px] text-paper/65">
             <span>{DEMO_TIME}</span>
             <span className="flex items-center gap-2">
               <Wifi size={9} />
@@ -42,7 +42,7 @@ export function PhoneNotification({ variant = 'notification' }: PhoneNotificatio
                 </span>
                 <span className="min-w-0 flex-1">
                   <span className="block truncate text-[10px] font-bold leading-tight">Guardião Elétrico</span>
-                  <span className="block font-mono text-[7px] uppercase tracking-[0.05em] text-[#D94A35]">
+                  <span className="block font-mono text-[7px] uppercase tracking-[0.05em] text-[#B23A27]">
                     app aberto / alarme
                   </span>
                 </span>
@@ -74,7 +74,7 @@ export function PhoneNotification({ variant = 'notification' }: PhoneNotificatio
                 <VolumeX size={10} /> Silenciar no app
               </div>
 
-              <div className="mt-1.5 font-mono text-[6.5px] uppercase tracking-[0.1em] text-[#D94A35]">
+              <div className="mt-1.5 font-mono text-[6.5px] uppercase tracking-[0.1em] text-[#B23A27]">
                 Simulação / planejado
               </div>
             </div>
@@ -109,7 +109,7 @@ export function PhoneNotification({ variant = 'notification' }: PhoneNotificatio
                 </div>
               </div>
 
-              <div className="mt-1.5 text-center font-mono text-[6.5px] uppercase tracking-[0.12em] text-paper/40">
+              <div className="mt-1.5 text-center font-mono text-[6.5px] uppercase tracking-[0.12em] text-paper/60">
                 Simulação / não envia avisos reais
               </div>
             </>

@@ -71,13 +71,26 @@ npm run preview
 
 O build usa `vite-plugin-singlefile`: **`dist/index.html` é autossuficiente** e pode ser aberto diretamente pelo navegador (duplo clique), sem servidor e sem internet. Isso é útil para apresentar o pitch em qualquer computador.
 
-A versão publicada é gerada a partir de `dist/index.html` e copiada para `docs/index.html`, servida pelo GitHub Pages em `/docs`.
+A versão publicada é gerada a partir de `dist/index.html`, `dist/robots.txt` e `dist/sitemap.xml`, copiados para `docs/` e servidos pelo GitHub Pages em `/docs`.
+
+### Links diretos
+
+A navegação usa hash routing, então cada tela tem uma URL compartilhável e o botão Voltar do navegador funciona:
+
+| Tela | URL |
+| --- | --- |
+| Início | `#/` |
+| Comparação guiada | `#/comparar` |
+| Explorar sinais | `#/explorar` |
+| Como funciona | `#/como-funciona` |
+| Planos e compra | `#/planos` |
 
 ## Controles
 
 - **Comparar os sistemas:** inicia a sequência guiada automaticamente.
 - **Explorar o Guardião:** abre o modo manual com os sinais.
 - **Como funciona?:** abre o painel explicativo interativo.
+- **Planos e preços:** abre a proposta comercial e a simulação de compra.
 - **Som:** começa desligado; o áudio só é criado após o clique no botão.
 - **Tela cheia:** disponível no cabeçalho do simulador.
 
@@ -137,10 +150,12 @@ A simulação diferencia claramente o que é protótipo do que é planejado:
 
 - Textos em português brasileiro, legendas sempre visíveis e contraste alto.
 - Controles com `aria-pressed`, `aria-checked` e regiões `aria-live` para as legendas.
-- Respeito a `prefers-reduced-motion`.
+- Respeito a `prefers-reduced-motion` no CSS e nas transições via `MotionConfig`.
+- Link **Pular para o conteúdo**, foco visível e foco preso nos overlays de resumo e compra.
+- Navegação por hash com links compartilháveis e botões Voltar/Avançar do navegador.
 - Ilustração com `aria-hidden`; a narrativa está sempre no texto.
 - Layout pensado para projetor 1920×1080, com adaptação para celular.
-- O resumo final prende o foco do teclado e pode ser fechado com `Esc`.
+- Lighthouse **100** em acessibilidade, boas práticas e SEO nas telas principais (início, simulador e planos).
 
 ## Limitações
 
