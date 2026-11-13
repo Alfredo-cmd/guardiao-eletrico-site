@@ -1,11 +1,12 @@
 import { useEffect, useRef } from 'react'
 import { motion } from 'motion/react'
-import { Camera, Check, Info, Lightbulb, RotateCcw, ShieldCheck, X } from 'lucide-react'
+import { Camera, Check, Info, Lightbulb, RotateCcw, ShieldCheck, ShoppingBag, X } from 'lucide-react'
 
 interface SummaryOverlayProps {
   onRestart: () => void
   onHome: () => void
   onHow: () => void
+  onPricing: () => void
 }
 
 const cameraPoints = [
@@ -20,7 +21,7 @@ const guardianPoints = [
   'Alarme e aviso no celular, obstrução e adulteração seguem em desenvolvimento.',
 ]
 
-export function SummaryOverlay({ onRestart, onHome, onHow }: SummaryOverlayProps) {
+export function SummaryOverlay({ onRestart, onHome, onHow, onPricing }: SummaryOverlayProps) {
   const panelRef = useRef<HTMLDivElement>(null)
   const primaryRef = useRef<HTMLButtonElement>(null)
 
@@ -142,7 +143,10 @@ export function SummaryOverlay({ onRestart, onHome, onHow }: SummaryOverlayProps
           <button type="button" ref={primaryRef} className="btn btn-primary" onClick={onRestart}>
             <RotateCcw size={15} /> Repetir demonstração
           </button>
-          <button type="button" className="btn btn-ghost" onClick={onHow}>
+          <button type="button" className="btn btn-ghost" onClick={onPricing}>
+            <ShoppingBag size={15} /> Ver planos e simular compra
+          </button>
+          <button type="button" className="btn btn-quiet" onClick={onHow}>
             <Lightbulb size={15} /> Como o Guardião pensa
           </button>
           <button type="button" className="btn btn-quiet sm:ml-auto" onClick={onHome}>

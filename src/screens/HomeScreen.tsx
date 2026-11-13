@@ -1,11 +1,13 @@
 import { Play, SlidersHorizontal } from 'lucide-react'
 import { Brand } from '../components/Brand'
 import { HouseScene } from '../components/HouseScene'
+import { formatBRL, PLANS } from '../data/plans'
 
 interface HomeScreenProps {
   onCompare: () => void
   onExplore: () => void
   onHow: () => void
+  onPricing: () => void
 }
 
 const idleSignals = {
@@ -19,7 +21,7 @@ const idleSignals = {
   phoneAlarm: false,
 }
 
-export function HomeScreen({ onCompare, onExplore, onHow }: HomeScreenProps) {
+export function HomeScreen({ onCompare, onExplore, onHow, onPricing }: HomeScreenProps) {
   return (
     <div className="app-shell bg-paper text-ink">
       <header className="topbar">
@@ -30,10 +32,9 @@ export function HomeScreen({ onCompare, onExplore, onHow }: HomeScreenProps) {
             <button
               type="button"
               className="btn btn-ghost btn-sm whitespace-nowrap"
-              onClick={onHow}
-              aria-label="Como funciona?"
+              onClick={onPricing}
             >
-              <span>Como funciona?</span>
+              <span>Planos e preços</span>
             </button>
           </div>
         </div>
@@ -105,6 +106,21 @@ export function HomeScreen({ onCompare, onExplore, onHow }: HomeScreenProps) {
             <p className="mt-5 max-w-[56ch] border-l-2 border-ink/30 pl-3 text-[11px] leading-relaxed text-muted">
               A comparação é com uma câmera básica sem alertas inteligentes, não com todas as câmeras do mercado.
             </p>
+
+            <div className="mt-6 border-t-2 border-ink pt-4">
+              <div className="flex flex-wrap items-end justify-between gap-3">
+                <div>
+                  <span className="font-mono text-[9px] uppercase tracking-[0.05em] text-muted">Proposta comercial</span>
+                  <p className="mt-1 text-[15px] font-bold leading-tight">
+                    Kit local a partir de <span className="bg-safety px-1">{formatBRL(PLANS[0].setup)}</span>
+                  </p>
+                  <p className="mt-0.5 text-[10px] text-muted">Valores ilustrativos / instalação não inclusa.</p>
+                </div>
+                <button type="button" className="btn btn-ghost btn-sm" onClick={onPricing}>
+                  Ver planos e simular compra
+                </button>
+              </div>
+            </div>
           </section>
 
           <section className="min-w-0">

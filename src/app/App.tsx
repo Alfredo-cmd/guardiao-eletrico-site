@@ -2,15 +2,17 @@ import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'motion/react'
 import { HomeScreen } from '../screens/HomeScreen'
 import { HowItWorksScreen } from '../screens/HowItWorksScreen'
+import { PricingScreen } from '../screens/PricingScreen'
 import { SimulatorScreen } from '../screens/SimulatorScreen'
 
-type View = 'home' | 'pitch' | 'explore' | 'how'
+type View = 'home' | 'pitch' | 'explore' | 'how' | 'pricing'
 
 const titles: Record<View, string> = {
   home: 'Guardião Elétrico — Simulação interativa',
   pitch: 'Guardião Elétrico — Comparação guiada',
   explore: 'Guardião Elétrico — Explorar sinais',
   how: 'Guardião Elétrico — Como funciona',
+  pricing: 'Guardião Elétrico — Planos e simulação de compra',
 }
 
 export function App() {
@@ -38,11 +40,21 @@ export function App() {
             onCompare={() => setView('pitch')}
             onExplore={() => setView('explore')}
             onHow={() => setView('how')}
+            onPricing={() => setView('pricing')}
           />
         )}
 
         {view === 'how' && (
           <HowItWorksScreen onBack={home} onCompare={() => setView('pitch')} />
+        )}
+
+        {view === 'pricing' && (
+          <PricingScreen
+            onBack={home}
+            onHome={home}
+            onCompare={() => setView('pitch')}
+            onHow={() => setView('how')}
+          />
         )}
 
         {(view === 'pitch' || view === 'explore') && (
@@ -51,6 +63,7 @@ export function App() {
             mode={view}
             onExit={home}
             onHow={() => setView('how')}
+            onPricing={() => setView('pricing')}
           />
         )}
       </motion.div>

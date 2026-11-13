@@ -15,6 +15,7 @@ A ilustração é 2.5D/isométrica, feita em SVG, e toda a interação roda no n
 - **Guardião:** mão detectada + vibração detectada → buzzer local, com a regra exibida em tempo real. O alarme também pode tocar no celular pelo app (planejado).
 - **Modo Explorar:** ligue e desligue mão, vibração, obstrução, adulteração e alarme no celular para ver a lógica responder.
 - **Como o Guardião pensa?:** painel interativo com a porta lógica `mão E vibração` e as ramificações planejadas.
+- **Planos e simulação de compra:** três configurações, valores ilustrativos e uma ficha de pedido que não processa pagamentos.
 - **Alarme no celular** pelo app, exibido junto do buzzer local, e **notificação simulada** com tipo de evento, horário e localização cadastrada (sem GPS e sem envio real).
 - **Resumo final** com as duas respostas e a frase de fechamento do pitch.
 - Controles de pausa, etapa anterior/próxima, reinício, som e tela cheia.
@@ -31,6 +32,18 @@ A ilustração é 2.5D/isométrica, feita em SVG, e toda a interação roda no n
 ## Direção visual
 
 A interface foi reformulada como um **laudo de campo / prancha técnica**: papel cru, tinta preta, amarelo de sinalização e vermelho de alerta. A casa é uma ilustração noturna em SVG dentro de uma prancha com moldura, códigos de equipamento e legenda; o simulador usa um painel de instrumentos escuro ao lado da prancha. A tipografia combina Anton para títulos, Archivo para leitura e IBM Plex Mono apenas para leituras e códigos.
+
+## Planos e simulação de compra
+
+A ficha **004 / proposta comercial** apresenta três configurações:
+
+| Plano | Kit | Mensalidade | Situação |
+| --- | ---: | ---: | --- |
+| Essencial | R$ 349,00 | — | protótipo atual |
+| Conectado | R$ 549,00 | R$ 19,90 | inclui recursos planejados |
+| Total | R$ 749,00 | R$ 29,90 | inclui obstrução e adulteração planejadas |
+
+Os valores são **ilustrativos para o pitch** e podem ser alterados em `src/data/plans.ts`. O fluxo de compra é uma simulação: escolhe plano, quantidade e forma de pagamento fictícia, mas **não coleta dados, não processa pagamento e não cria pedido**. A confirmação mostra apenas um código de demonstração.
 
 ## Skills do agente
 
@@ -86,10 +99,12 @@ src/
     HomeScreen.tsx             # tela inicial
     SimulatorScreen.tsx        # comparação guiada + modo explorar
     HowItWorksScreen.tsx       # painel "Como o Guardião pensa?"
+    PricingScreen.tsx          # planos e simulação de compra
   components/
     HouseScene.tsx             # ilustração isométrica e estados visuais
     Character.tsx              # personagem 2.5D
     PhoneNotification.tsx      # notificação fictícia
+    PurchaseOverlay.tsx        # ficha de pedido simulada
     SensorPanel.tsx            # painel de sinais
     PlaybackControls.tsx       # controles e linha do tempo
     ComparisonSelector.tsx     # capítulos da comparação
@@ -97,6 +112,7 @@ src/
     SummaryOverlay.tsx         # resumo final
     Brand.tsx
   data/scenes.ts               # roteiro declarativo + lógica do modo explorar
+  data/plans.ts                # planos, preços e recursos comerciais
   hooks/
     useSimulation.ts           # máquina de estados e autoplay
     useSound.ts                # WebAudio, sem arquivos externos
@@ -113,6 +129,7 @@ A simulação diferencia claramente o que é protótipo do que é planejado:
 - **Protótipo atual:** detecção de mão por visão computacional, sensor de vibração, regra combinada e buzzer local.
 - **Planejado:** obstrução da câmera, adulteração física, alarme e notificação no celular, localização cadastrada e infraestrutura de comunicação. Obstrução e adulteração também têm o alarme como consequência, mas a lógica ainda não está implementada.
 - Nenhuma chamada de emergência ou notificação real é disparada.
+- O fluxo de compra é inteiramente simulado: nenhum pagamento é processado, nenhum dado é coletado e nenhum pedido real é criado.
 - O endereço usado é fictício (`Cambará/PR`) e não há coleta de dados.
 - A comparação é com uma **câmera básica sem alertas inteligentes**, não com todas as câmeras do mercado.
 

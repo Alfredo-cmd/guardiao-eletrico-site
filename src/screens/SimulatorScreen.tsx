@@ -34,6 +34,7 @@ interface SimulatorScreenProps {
   mode: 'pitch' | 'explore'
   onExit: () => void
   onHow: () => void
+  onPricing: () => void
 }
 
 function RulePill({ active, label, tone = 'normal' }: { active: boolean; label: string; tone?: 'normal' | 'alert' }) {
@@ -154,7 +155,7 @@ function ExploreSwitch({
   )
 }
 
-export function SimulatorScreen({ mode, onExit, onHow }: SimulatorScreenProps) {
+export function SimulatorScreen({ mode, onExit, onHow, onPricing }: SimulatorScreenProps) {
   const sim = useSimulation({ mode, autoStart: mode === 'pitch' })
   const { soundOn, toggleSound } = useSound(sim.signals.alarm, sim.signals.phone)
   const { isFullscreen, toggleFullscreen } = useFullscreen()
@@ -616,7 +617,7 @@ export function SimulatorScreen({ mode, onExit, onHow }: SimulatorScreenProps) {
 
       <AnimatePresence>
         {sim.isSummary && (
-          <SummaryOverlay key="summary" onRestart={restart} onHome={onExit} onHow={onHow} />
+          <SummaryOverlay key="summary" onRestart={restart} onHome={onExit} onHow={onHow} onPricing={onPricing} />
         )}
       </AnimatePresence>
     </div>
