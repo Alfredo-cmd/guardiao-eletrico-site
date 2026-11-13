@@ -1,0 +1,120 @@
+# Guardião Elétrico — Simulação interativa
+
+Site de demonstração para o pitch **PIINC**: a mesma ameaça, duas respostas. A experiência compara uma câmera básica, que apenas registra, com o Guardião Elétrico, que combina câmera e sensor de vibração para identificar uma possível interferência e reagir localmente.
+
+A ilustração é 2.5D/isométrica, feita em SVG, e toda a interação roda no navegador. Não há API, autenticação, imagens remotas nem envio de notificações reais.
+
+**Site publicado:** https://alfredo-cmd.github.io/guardiao-eletrico-site/
+
+![Tela inicial](docs/preview.png)
+
+## O que a demonstração inclui
+
+- **Sequência guiada (~68 s)** com a mesma cena e a mesma trajetória nas duas versões.
+- **Câmera básica:** gravação, visão obstruída e a mensagem “registro não é resposta imediata”.
+- **Guardião:** mão detectada + vibração detectada → buzzer local, com a regra exibida em tempo real. O alarme também pode tocar no celular pelo app (planejado).
+- **Modo Explorar:** ligue e desligue mão, vibração, obstrução, adulteração e alarme no celular para ver a lógica responder.
+- **Como o Guardião pensa?:** painel interativo com a porta lógica `mão E vibração` e as ramificações planejadas.
+- **Alarme no celular** pelo app, exibido junto do buzzer local, e **notificação simulada** com tipo de evento, horário e localização cadastrada (sem GPS e sem envio real).
+- **Resumo final** com as duas respostas e a frase de fechamento do pitch.
+- Controles de pausa, etapa anterior/próxima, reinício, som e tela cheia.
+
+## Stack
+
+- React 18 + TypeScript + Vite 6
+- Tailwind CSS 4
+- Motion para transições
+- Lucide para ícones
+- SVG autoral para a casa, o personagem e os efeitos
+- Fontes locais (Outfit Variable e Inter Variable via `@fontsource`)
+
+## Rodar o projeto
+
+Requisitos: Node.js 20 ou superior.
+
+```bash
+npm install
+npm run dev
+```
+
+O Vite abre o endereço local, normalmente `http://localhost:5173`.
+
+### Build de produção
+
+```bash
+npm run build
+npm run preview
+```
+
+O build usa `vite-plugin-singlefile`: **`dist/index.html` é autossuficiente** e pode ser aberto diretamente pelo navegador (duplo clique), sem servidor e sem internet. Isso é útil para apresentar o pitch em qualquer computador.
+
+A versão publicada é gerada a partir de `dist/index.html` e copiada para `docs/index.html`, servida pelo GitHub Pages em `/docs`.
+
+## Controles
+
+- **Comparar os sistemas:** inicia a sequência guiada automaticamente.
+- **Explorar o Guardião:** abre o modo manual com os sinais.
+- **Como funciona?:** abre o painel explicativo interativo.
+- **Som:** começa desligado; o áudio só é criado após o clique no botão.
+- **Tela cheia:** disponível no cabeçalho do simulador.
+
+Atalhos durante a sequência guiada:
+
+| Tecla | Ação |
+| --- | --- |
+| `Espaço` | Pausar / continuar |
+| `←` / `→` | Etapa anterior / próxima |
+| `R` | Reiniciar demonstração |
+| `M` | Ligar / desligar som |
+
+## Estrutura
+
+```
+src/
+  app/App.tsx                  # troca de telas e transições
+  screens/
+    HomeScreen.tsx             # tela inicial
+    SimulatorScreen.tsx        # comparação guiada + modo explorar
+    HowItWorksScreen.tsx       # painel "Como o Guardião pensa?"
+  components/
+    HouseScene.tsx             # ilustração isométrica e estados visuais
+    Character.tsx              # personagem 2.5D
+    PhoneNotification.tsx      # notificação fictícia
+    SensorPanel.tsx            # painel de sinais
+    PlaybackControls.tsx       # controles e linha do tempo
+    ComparisonSelector.tsx     # capítulos da comparação
+    ExplainerFlow.tsx          # regra interativa (E lógico)
+    SummaryOverlay.tsx         # resumo final
+    Brand.tsx
+  data/scenes.ts               # roteiro declarativo + lógica do modo explorar
+  hooks/
+    useSimulation.ts           # máquina de estados e autoplay
+    useSound.ts                # WebAudio, sem arquivos externos
+    useFullscreen.ts
+    useFitAspect.ts            # encaixe 1000×720 da cena
+  lib/iso.ts                   # projeção isométrica
+  styles/globals.css           # tokens, componentes e animações
+```
+
+## Integridade da demonstração
+
+A simulação diferencia claramente o que é protótipo do que é planejado:
+
+- **Protótipo atual:** detecção de mão por visão computacional, sensor de vibração, regra combinada e buzzer local.
+- **Planejado:** obstrução da câmera, adulteração física, alarme e notificação no celular, localização cadastrada e infraestrutura de comunicação. Obstrução e adulteração também têm o alarme como consequência, mas a lógica ainda não está implementada.
+- Nenhuma chamada de emergência ou notificação real é disparada.
+- O endereço usado é fictício (`Cambará/PR`) e não há coleta de dados.
+- A comparação é com uma **câmera básica sem alertas inteligentes**, não com todas as câmeras do mercado.
+
+## Acessibilidade e apresentação
+
+- Textos em português brasileiro, legendas sempre visíveis e contraste alto.
+- Controles com `aria-pressed`, `aria-checked` e regiões `aria-live` para as legendas.
+- Respeito a `prefers-reduced-motion`.
+- Ilustração com `aria-hidden`; a narrativa está sempre no texto.
+- Layout pensado para projetor 1920×1080, com adaptação para celular.
+- O resumo final prende o foco do teclado e pode ser fechado com `Esc`.
+
+## Limitações
+
+Esta é uma simulação ilustrativa. Obstrução de câmera exige tratamento de iluminação, perda de sinal e falsos positivos; adulteração física pode exigir sensores dedicados. O sistema detecta sinais de possível interferência — não impede todos os furtos nem identifica pessoas.
