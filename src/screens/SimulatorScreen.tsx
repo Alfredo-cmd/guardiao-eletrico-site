@@ -161,7 +161,7 @@ export function SimulatorScreen({ mode, onExit, onHow, onPricing }: SimulatorScr
   const { isFullscreen, toggleFullscreen } = useFullscreen()
   const { ref: sceneHolderRef, width: sceneWidth } = useFitAspect(1000 / 720)
 
-  const { togglePlay, next, prev, restart, goToPhase, toggleExplore, setBasicMode, resetExplore } = sim
+  const { togglePlay, next, prev, restart, goToPhase, goToStep, toggleExplore, setBasicMode, resetExplore } = sim
 
   useEffect(() => {
     if (mode !== 'pitch') return
@@ -563,9 +563,12 @@ export function SimulatorScreen({ mode, onExit, onHow, onPricing }: SimulatorScr
                       const isPast = i < sim.index
                       const startsPhase = i > 0 && steps[i - 1].phase !== item.phase
                       return (
-                        <div
+                        <button
                           key={item.id}
-                          className={`flex items-center gap-2 py-1 ${
+                          type="button"
+                          onClick={() => goToStep(i)}
+                          aria-current={isCurrent ? 'step' : undefined}
+                          className={`flex w-full items-center gap-2 py-1 text-left transition-colors hover:bg-paper/5 ${
                             startsPhase ? 'mt-1 border-t border-paper/10 pt-1.5' : ''
                           } ${isCurrent ? 'text-paper' : isPast ? 'text-paper/65' : 'text-paper/55'}`}
                         >
@@ -575,7 +578,7 @@ export function SimulatorScreen({ mode, onExit, onHow, onPricing }: SimulatorScr
                           <span className="truncate text-[9.5px] leading-tight">{item.title}</span>
                           {item.planned && <span className="ml-auto h-1 w-1 flex-none bg-safety/70" />}
                           {isCurrent && <span className="ml-auto h-1.5 w-1.5 flex-none bg-safety" />}
-                        </div>
+                        </button>
                       )
                     })}
                   </div>

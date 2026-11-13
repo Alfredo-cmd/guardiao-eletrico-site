@@ -161,6 +161,7 @@ export function useSimulation({ mode, autoStart = false }: UseSimulationOptions)
     restart,
     togglePlay,
     goToPhase,
+    goToStep: goTo,
     // explore
     explore,
     readout,

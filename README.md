@@ -93,6 +93,7 @@ A navegação usa hash routing, então cada tela tem uma URL compartilhável e o
 - **Explorar o Guardião:** abre o modo manual com os sinais.
 - **Como funciona?:** abre o painel explicativo interativo.
 - **Planos e preços:** abre a proposta comercial e a simulação de compra.
+- **Sequência lateral:** no modo guiado, clique em qualquer etapa para pular até ela.
 - **Som:** começa desligado; o áudio só é criado após o clique no botão.
 - **Tela cheia:** disponível no cabeçalho do simulador.
 
@@ -135,6 +136,7 @@ src/
     useFitAspect.ts            # encaixe 1000×720 da cena
   lib/iso.ts                   # projeção isométrica
   styles/globals.css           # tokens, componentes e animações
+public/                        # robots.txt e sitemap.xml
 ```
 
 ## Integridade da demonstração
